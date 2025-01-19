@@ -1,0 +1,21 @@
+{
+    "name": "2025 National Clogging Convention",
+    "short_name": "Clogging Convention",
+    "description": "Your guide to the 2025 National Clogging Convention",
+    "start_url": "index.html",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#4CAF50",
+    "icons": [
+        {
+            "src": "Convention Icon 192 x 192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "convention-icon-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
