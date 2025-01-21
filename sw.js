@@ -1,15 +1,15 @@
-const CACHE_NAME = 'clogging-convention-cache-v2'; // Incremented version number
+const CACHE_NAME = 'clogging-convention-cache-v3'; // Incremented version number
 const urlsToCache = [
     '/',
     '/index.html',
     '/style.css',
     '/script.js',
     '/manifest.json',
-    '/convention-icon-72x72.png',
-    '/convention-icon-96x96.png',
-    '/convention-icon-144x144.png',
-    '/convention-icon-192x192.png',
-    '/convention-icon-512x512.png'
+    '/images/convention-icon-72x72.png',
+    '/images/convention-icon-96x96.png',
+    '/images/convention-icon-144x144.png',
+    '/images/convention-icon-192x192.png',
+    '/images/convention-icon-512x512.png'
 ];
 
 // Install the service worker and cache assets
@@ -50,4 +50,3 @@ self.addEventListener('fetch', (event) => {
             })
     );
 });
-
