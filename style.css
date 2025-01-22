@@ -106,33 +106,6 @@ button:hover {
     width: 100%; /* Ensure buttons take full width within grid cell */
 }
 
-section h2 {
-    text-align: center;
-}
-
-/* Mobile responsiveness */
-@media (max-width: 768px) {
-    .button-container {
-        grid-template-columns: 1fr; /* Single column on smaller screens */
-    }
-}
-
-/* Layout for the button container */
-.button-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 columns */
-    gap: 20px; /* Space between the buttons */
-    margin-top: 30px;
-}
-
-.button-item {
-    width: 100%; /* Ensure buttons take full width within grid cell */
-}
-
-section h2 {
-    text-align: center;
-}
-
 /* Mobile responsiveness */
 @media (max-width: 768px) {
     .button-container {
@@ -182,9 +155,5 @@ section h2 {
     background-color: #555;
     border-radius: 4px;
 }
-
-
-
-
 
 
