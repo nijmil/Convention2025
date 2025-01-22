@@ -41,15 +41,6 @@ h2 {
     color: #4CAF50;
 }
 
-/* Footer styling */
-footer {
-    text-align: center;
-    margin-top: 50px;
-    padding: 10px;
-    background-color: #333;
-    color: white;
-}
-
 /* Location section */
 #location {
     padding: 20px;
@@ -86,7 +77,7 @@ footer {
 
 /* Basic styling for buttons */
 button {
-    background-color: #4CAF50; /* Green */
+    background-color: #FFD700; /* Light Gold */
     color: white;
     border: none;
     padding: 15px;
@@ -98,7 +89,7 @@ button {
 }
 
 button:hover {
-    background-color: #45a049; /* Darker green on hover */
+    background-color: #ffcc00; /* Slightly darker gold on hover */
 }
 
 /* Layout for the button container */
@@ -167,12 +158,7 @@ section h2 {
     border-radius: 4px;
 }
 
-/* Footer (still kept here) */
-footer {
-    background-color: #333;
-    color: #fff;
-    padding: 10px 0;
-    text-align: center;
-}
+
+
 
 
