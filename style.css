@@ -110,13 +110,6 @@ button:hover {
     height: 100%; /* Ensure buttons fill the height of the grid cell */
 }
 
-/* Remove mobile responsiveness */
-@media (max-width: 768px) {
-    .button-container {
-        grid-template-columns: repeat(2, 1fr); /* Keep 2 columns even on smaller screens */
-    }
-}
-
 /* Navigation Menu at the Bottom */
 .bottom-nav {
     position: fixed;
