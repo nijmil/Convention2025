@@ -81,3 +81,43 @@ footer {
     margin-top: 15px;
     border-radius: 8px;
 }
+
+/* Basic styling for buttons */
+button {
+    background-color: #4CAF50; /* Green */
+    color: white;
+    border: none;
+    padding: 15px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 8px;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+/* Layout for the button container */
+.button-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    gap: 20px; /* Space between the buttons */
+    margin-top: 30px;
+}
+
+.button-item {
+    width: 100%; /* Ensure buttons take full width within grid cell */
+}
+
+section h2 {
+    text-align: center;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .button-container {
+        grid-template-columns: 1fr; /* Single column on smaller screens */
+    }
+}
