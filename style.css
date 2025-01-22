@@ -77,19 +77,44 @@ h2 {
 
 /* Basic styling for buttons */
 button {
-    background-color: #FFD700; /* Light Gold */
-    color: white;
-    border: none;
+    background-color: black; /* Black background */
+    color: #cbb643; /* Font color */
+    border: 2px solid #cbb643; /* Outline with gold color */
     padding: 15px;
     font-size: 16px;
     cursor: pointer;
     border-radius: 8px;
     width: 100%;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Add transition for color changes */
 }
 
 button:hover {
-    background-color: #ffcc00; /* Slightly darker gold on hover */
+    background-color: #cbb643; /* Gold background on hover */
+    color: black; /* Black font on hover */
+    border-color: #cbb643; /* Maintain gold outline on hover */
+}
+
+/* Layout for the button container */
+.button-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    gap: 20px; /* Space between the buttons */
+    margin-top: 30px;
+}
+
+.button-item {
+    width: 100%; /* Ensure buttons take full width within grid cell */
+}
+
+section h2 {
+    text-align: center;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .button-container {
+        grid-template-columns: 1fr; /* Single column on smaller screens */
+    }
 }
 
 /* Layout for the button container */
