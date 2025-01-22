@@ -17,7 +17,6 @@ body {
 
 /* Header styling */
 header {
-    /* Removed padding and background styling, just centered the logo */
     text-align: center;
 }
 
@@ -80,12 +79,16 @@ button {
     background-color: black; /* Black background */
     color: #cbb643; /* Font color */
     border: 2px solid #cbb643; /* Outline with gold color */
-    padding: 15px;
+    padding: 30px; /* Larger padding to make buttons more squarish */
     font-size: 16px;
     cursor: pointer;
     border-radius: 8px;
     width: 100%;
+    height: 100%; /* Make the height and width equal */
     transition: background-color 0.3s ease, color 0.3s ease; /* Add transition for color changes */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 button:hover {
@@ -104,12 +107,13 @@ button:hover {
 
 .button-item {
     width: 100%; /* Ensure buttons take full width within grid cell */
+    height: 100%; /* Ensure buttons fill the height of the grid cell */
 }
 
-/* Mobile responsiveness */
+/* Remove mobile responsiveness */
 @media (max-width: 768px) {
     .button-container {
-        grid-template-columns: 1fr; /* Single column on smaller screens */
+        grid-template-columns: repeat(2, 1fr); /* Keep 2 columns even on smaller screens */
     }
 }
 
@@ -155,5 +159,6 @@ button:hover {
     background-color: #555;
     border-radius: 4px;
 }
+
 
 
