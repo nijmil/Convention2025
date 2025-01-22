@@ -46,12 +46,12 @@ h2 {
     justify-content: space-evenly; /* Space buttons evenly across the row */
     margin-top: 20px; /* Add spacing below the logo */
     gap: 10px; /* Space between buttons */
-    flex-wrap: wrap; /* Allow buttons to wrap if needed on smaller screens */
+    flex-wrap: nowrap; /* Prevent buttons from wrapping onto a new row */
 }
 
 /* Styling for each button */
 .button-item {
-    flex: none; /* Prevent buttons from stretching */
+    flex: 1; /* Ensure buttons are evenly spaced */
     text-align: center;
 }
 
@@ -126,13 +126,15 @@ button:hover {
         gap: 8px; /* Slightly reduce spacing between buttons */
         justify-content: space-between; /* Ensure buttons fill the available space */
         width: 100%; /* Make the container fill the screen */
+        flex-wrap: nowrap; /* Prevent wrapping onto a new row */
     }
 
     button {
-        width: 100%; /* Ensure buttons fill the full width on mobile */
+        width: 33%; /* Make the buttons take up 1/3 of the screen width */
         min-width: 120px; /* Prevent buttons from becoming too small */
         height: 50px; /* Slightly larger height for mobile */
         font-size: 14px; /* Adjust font size for better fit */
     }
 }
+
 
