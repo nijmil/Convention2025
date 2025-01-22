@@ -43,7 +43,7 @@ h2 {
 /* Button container styling for menu-like buttons */
 .button-container {
     display: flex; /* Use flexbox for horizontal alignment */
-    justify-content: center; /* Center buttons below the logo */
+    justify-content: space-evenly; /* Space buttons evenly across the row */
     margin-top: 20px; /* Add spacing below the logo */
     gap: 10px; /* Space between buttons */
     flex-wrap: wrap; /* Allow buttons to wrap if needed on smaller screens */
@@ -60,13 +60,14 @@ button {
     background-color: black; /* Black background */
     color: #cbb643; /* Font color */
     border: 2px solid #cbb643; /* Outline with gold color */
-    font-size: 14px; /* Smaller font size */
+    font-size: 16px; /* Larger font size */
     cursor: pointer;
     border-radius: 8px;
-    padding: 10px; /* Smaller padding for compact buttons */
+    padding: 12px 20px; /* Adjust padding for better size */
     transition: background-color 0.3s ease, color 0.3s ease;
-    width: 120px; /* Reduced button width */
-    height: 40px; /* Reduced button height */
+    width: auto; /* Allow buttons to adjust width based on text */
+    min-width: 150px; /* Ensure buttons are not too small */
+    height: 45px; /* Slightly larger height */
     text-align: center;
 }
 
@@ -123,12 +124,15 @@ button:hover {
 @media (max-width: 600px) {
     .button-container {
         gap: 8px; /* Slightly reduce spacing between buttons */
-        justify-content: center; /* Keep buttons centered */
+        justify-content: space-between; /* Ensure buttons fill the available space */
+        width: 100%; /* Make the container fill the screen */
     }
 
     button {
-        width: 100px; /* Smaller button width for compact view */
-        height: 35px; /* Adjust height for mobile */
-        font-size: 12px; /* Reduce font size for smaller screens */
+        width: 100%; /* Ensure buttons fill the full width on mobile */
+        min-width: 120px; /* Prevent buttons from becoming too small */
+        height: 50px; /* Slightly larger height for mobile */
+        font-size: 14px; /* Adjust font size for better fit */
     }
 }
+
