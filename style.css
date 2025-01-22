@@ -40,21 +40,19 @@ h2 {
     color: #4CAF50;
 }
 
-/* Button container styling */
+/* Button container styling for 3 buttons in a single row */
 .button-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 columns */
-    gap: 20px; /* Space between the buttons */
+    display: flex; /* Use flexbox for horizontal alignment */
+    justify-content: space-evenly; /* Space buttons evenly across the row */
     margin-top: 30px;
-    justify-content: center;
+    gap: 20px; /* Optional: Add extra space between buttons */
 }
 
+/* Styling for each button */
 .button-item {
-    width: 150px; /* Fixed width for all buttons */
-    height: 150px; /* Fixed height for all buttons */
-    display: flex; /* Center the button inside the grid */
-    align-items: center;
-    justify-content: center;
+    flex: 1; /* Allow buttons to grow and take equal space */
+    max-width: 200px; /* Limit the button size */
+    text-align: center;
 }
 
 /* Basic styling for buttons */
@@ -65,12 +63,10 @@ button {
     font-size: 16px;
     cursor: pointer;
     border-radius: 8px;
-    width: 100%; /* Ensure buttons fill their grid cell */
-    height: 100%; /* Ensure buttons fill their grid cell */
+    padding: 15px; /* Adjust padding for buttons */
     transition: background-color 0.3s ease, color 0.3s ease;
-    display: flex; /* Center text inside the button */
-    align-items: center;
-    justify-content: center;
+    width: 100%; /* Ensure buttons fill their container width */
+    max-width: 150px; /* Limit maximum button width */
 }
 
 button:hover {
@@ -78,7 +74,6 @@ button:hover {
     color: black; /* Black font on hover */
     border-color: #cbb643; /* Maintain gold outline on hover */
 }
-
 
 /* Navigation Menu at the Bottom */
 .bottom-nav {
@@ -122,3 +117,4 @@ button:hover {
     background-color: #555;
     border-radius: 4px;
 }
+
