@@ -44,8 +44,10 @@ h2 {
 .button-container {
     display: flex; /* Use flexbox for horizontal alignment */
     justify-content: space-evenly; /* Space buttons evenly across the row */
+    flex-wrap: nowrap; /* Prevent wrapping to the next line */
     margin-top: 30px;
     gap: 20px; /* Optional: Add extra space between buttons */
+    overflow-x: auto; /* Allow horizontal scrolling on very small screens */
 }
 
 /* Styling for each button */
@@ -117,4 +119,17 @@ button:hover {
     background-color: #555;
     border-radius: 4px;
 }
+
+/* Responsive Design Adjustments */
+@media (max-width: 600px) {
+    .button-container {
+        flex-wrap: wrap; /* Allow wrapping on smaller screens */
+        justify-content: center; /* Center buttons when wrapped */
+    }
+
+    .button-item {
+        max-width: 150px; /* Ensure smaller buttons on small screens */
+    }
+}
+
 
