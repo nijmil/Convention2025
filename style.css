@@ -15,27 +15,18 @@ body {
 }
 
 /* Header styling */
-/*header {
-    /* background-color: #333; */ 
-    color: black; 
-    padding: 10px 0;
+header {
+    /* Removed padding and background styling, just centered the logo */
     text-align: center;
 }
 
-header nav ul {
-    list-style: none;
+header img {
+    display: block;
+    margin: 0 auto;
+    max-width: 300px;
+    height: auto;
 }
 
-header nav ul li {
-    display: inline;
-    margin-right: 20px;
-}
-
-header nav ul li a {
-    color: white;
-    text-decoration: none;
-}
-*/
 /* Main section styling */
 main {
     margin-top: 20px;
@@ -57,6 +48,7 @@ footer {
     background-color: #333;
     color: white;
 }
+
 #location {
     padding: 20px;
     background-color: #f9f9f9;
