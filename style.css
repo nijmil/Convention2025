@@ -15,9 +15,9 @@ body {
 }
 
 /* Header styling */
-header {
-    background-color: #333;
-    color: white;
+/*header {
+    /* background-color: #333; */ 
+    color: black; 
     padding: 10px 0;
     text-align: center;
 }
@@ -35,7 +35,7 @@ header nav ul li a {
     color: white;
     text-decoration: none;
 }
-
+*/
 /* Main section styling */
 main {
     margin-top: 20px;
