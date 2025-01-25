@@ -17,7 +17,6 @@
     </header>
     
     <main>
-        
         <!-- Content of the page goes here -->
         <div class="button-container">
             <!-- Each section below represents a button in the grid -->
@@ -44,7 +43,6 @@
                     the talented mother-son duo, Angelika and Oliver Kromer from Germany, as our guest instructors, alongside your favorite 
                     Australian talents. Whether you're a beginner or a seasoned pro, there’s something for everyone—immersive workshops, 
                     high-energy social events, and more! Don’t miss out on the fun—register today and secure your place on the dance floor! 
-                
                 </p>
                 <div class="registration-buttons">
                     <a href="https://www.cloggingaustralia.com/natconv/2025/registration.pdf?v=02Oct2024" class="register-button" target="_blank">
@@ -56,27 +54,25 @@
                 </div>
             </div>
         </section>
-
-        
     </main>
     
     <!-- Navigation Menu at the Bottom -->
-<nav class="bottom-nav">
-    <ul>
-        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
-        <li><a href="workshops.html"><i class="fas fa-calendar-day"></i> Workshops</a></li>
-        <li class="dropdown">
-            <a href="#" class="dropdown-toggle"><i class="fas fa-info-circle"></i> More</a>
-            <ul class="dropdown-menu">
-                <li><a href="things-to-do.html">Things To Do</a></li>
-                <li><a href="food-options.html">Food Options</a></li>
-                <li><a href="instructors.html">Instructors</a></li>
-                <li><a href="social-program.html">Social Program</a></li>
-                <li><a href="other-info.html">Other Info</a></li>
-            </ul>
-        </li>
-    </ul>
-</nav>
+    <nav class="bottom-nav">
+        <ul>
+            <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="workshops.html"><i class="fas fa-calendar-day"></i> Workshops</a></li>
+            <li class="dropdown">
+                <button onclick="toggleDropdown()"><i class="fas fa-info-circle"></i> More</button>
+                <div class="dropdown-content">
+                    <a href="things-to-do.html">Things To Do</a>
+                    <a href="food-options.html">Food Options</a>
+                    <a href="instructors.html">Instructors</a>
+                    <a href="social-program.html">Social Program</a>
+                    <a href="other-info.html">Other Info</a>
+                </div>
+            </li>
+        </ul>
+    </nav>
 
     <!-- Add to Home Screen Banner -->
     <div id="install-banner" style="display: none;">
@@ -102,6 +98,23 @@
         updateCountdown();
         setInterval(updateCountdown, 1000 * 60 * 60); // Update every hour
     </script>
+
+    <!-- Dropdown Functionality -->
+    <script>
+        function toggleDropdown() {
+            const dropdown = document.querySelector('.dropdown .dropdown-content');
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+        }
+
+        // Close the dropdown if clicked outside
+        window.onclick = function (event) {
+            const dropdown = document.querySelector('.dropdown .dropdown-content');
+            if (!event.target.closest('.dropdown')) {
+                dropdown.style.display = 'none';
+            }
+        };
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
+
