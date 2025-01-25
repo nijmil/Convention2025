@@ -81,7 +81,39 @@ button:hover {
     border-color: #cbb643; /* Maintain gold outline on hover */
 }
 
-/* Navigation Menu at the Bottom */
+/* Register image adjustment */
+.register-image {
+    max-width: 100%; /* Ensure the image fits the container */
+    height: auto; /* Maintain aspect ratio */
+    display: block;
+    margin: 0 auto; /* Center the image */
+}
+
+/* Registration button container */
+.registration-buttons {
+    display: flex;
+    flex-direction: column; /* Stack the buttons vertically */
+    gap: 15px; /* Space between buttons */
+    margin-top: 20px;
+}
+
+/* Register buttons */
+.register-button {
+    display: block;
+    background-color: #cbb643;
+    color: black;
+    text-align: center;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 18px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.register-button:hover {
+    background-color: #4CAF50;
+}
+
 .bottom-nav {
     position: fixed;
     bottom: 0;
@@ -138,6 +170,16 @@ button:hover {
         height: 50px; /* Maintain consistent height */
         font-size: 16px; /* Adjust font size for better fit */
     }
+
+    .registration-buttons {
+        gap: 10px; /* Adjust the gap between registration buttons */
+    }
+
+    .register-button {
+        padding: 12px;
+        font-size: 16px;
+    }
 }
+
 
 
