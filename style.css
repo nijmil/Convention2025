@@ -37,7 +37,7 @@ section {
 }
 
 h2 {
-    color: #4CAF50;
+    color: black;
 }
 
 /* Button container styling for menu-like buttons */
@@ -111,7 +111,7 @@ button:hover {
 }
 
 .register-button:hover {
-    background-color: #4CAF50;
+    background-color: #cbb643;
 }
 
 .bottom-nav {
