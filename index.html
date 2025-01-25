@@ -30,7 +30,7 @@
             </section>
             
             <section class="button-item">
-                <button onclick="window.location.href='things_to_do.html'">Things To Do</button>
+                <button onclick="window.location.href='workshops.html'">Weekend Program</button>
             </section>
         </div>
 
@@ -61,13 +61,22 @@
     </main>
     
     <!-- Navigation Menu at the Bottom -->
-    <nav class="bottom-nav">
-        <ul>
-            <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
-            <li><a href="workshops.html"><i class="fas fa-calendar-day"></i> Workshops</a></li>
-            <li><a href="info.html"><i class="fas fa-info-circle"></i> Info</a></li>
-        </ul>
-    </nav>
+<nav class="bottom-nav">
+    <ul>
+        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="workshops.html"><i class="fas fa-calendar-day"></i> Workshops</a></li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle"><i class="fas fa-info-circle"></i> More</a>
+            <ul class="dropdown-menu">
+                <li><a href="things-to-do.html">Things To Do</a></li>
+                <li><a href="food-options.html">Food Options</a></li>
+                <li><a href="instructors.html">Instructors</a></li>
+                <li><a href="social-program.html">Social Program</a></li>
+                <li><a href="other-info.html">Other Info</a></li>
+            </ul>
+        </li>
+    </ul>
+</nav>
 
     <!-- Add to Home Screen Banner -->
     <div id="install-banner" style="display: none;">
