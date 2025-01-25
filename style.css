@@ -100,18 +100,21 @@ button:hover {
 /* Register buttons */
 .register-button {
     display: block;
-    background-color: #cbb643;
-    color: black;
+    background-color: black; /* Same as venue buttons */
+    color: #cbb643; /* Same as venue buttons */
     text-align: center;
     padding: 15px;
     border-radius: 8px;
     font-size: 18px;
     text-decoration: none;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    border: 2px solid #cbb643; /* Same border as venue buttons */
 }
 
 .register-button:hover {
-    background-color: #cbb643;
+    background-color: #cbb643; /* Gold background on hover */
+    color: black; /* Black font on hover */
+    border-color: #cbb643; /* Maintain gold border on hover */
 }
 
 .bottom-nav {
@@ -180,6 +183,5 @@ button:hover {
         font-size: 16px;
     }
 }
-
 
 
