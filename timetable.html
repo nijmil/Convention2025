@@ -12,129 +12,135 @@
     <header>
         <img src="images/Convention_Logo.png" alt="2025 ACA National Clogging Convention">
     </header>
-<main>
-    <!-- Button container for date selection -->
-    <div class="button-container">
-        <div class="button-item">
-            <button id="thursday-btn">Thurs 11 Sept</button>
+    <main>
+        <!-- Button container for date selection -->
+        <div class="button-container">
+            <div class="button-item">
+                <button id="thursday-btn">Thurs 11 Sept</button>
+            </div>
+            <div class="button-item">
+                <button id="friday-btn">Fri 12 Sept</button>
+            </div>
+            <div class="button-item">
+                <button id="saturday-btn">Sat 13 Sept</button>
+            </div>
+            <div class="button-item">
+                <button id="sunday-btn">Sun 14 Sept</button>
+            </div>
         </div>
-        <div class="button-item">
-            <button id="friday-btn">Fri 12 Sept</button>
+    
+        <!-- Content for Thursday (default) -->
+        <div id="thursday-content" class="day-content">
+            <h2>Thursday 11 Sept</h2>
+            <table>
+                <tr>
+                    <td>7:30 - 10:00 PM</td>
+                    <td><span class="add-to-planner" data-event="Trail In Dance 'Step Back In Time'">Trail In Dance "Step Back In Time"</span></td>
+                </tr>
+            </table>
         </div>
-        <div class="button-item">
-            <button id="saturday-btn">Sat 13 Sept</button>
+    
+        <!-- Content for Friday -->
+        <div id="friday-content" class="day-content" style="display: none;">
+            <h2>Friday 12 Sept</h2>
+            <table>
+                <tr>
+                    <td>11:00 - 12:00 PM</td>
+                    <td><span class="add-to-planner" data-event="Leaders Meeting">Leaders Meeting</span></td>
+                </tr>
+                <tr>
+                    <td>12:00 - 12:30 PM</td>
+                    <td><span class="add-to-planner" data-event="Lunch">Lunch</span></td>
+                </tr>
+                <tr>
+                    <td>12:30 - 1:30 PM</td>
+                    <td><span class="add-to-planner" data-event="AGM">AGM</span></td>
+                </tr>
+                <tr>
+                    <td>3:00 - 5:00 PM</td>
+                    <td><span class="add-to-planner" data-event="Choreo Challenge">Choreo Challenge</span></td>
+                </tr>
+                <tr>
+                    <td>6:00 PM</td>
+                    <td><span class="add-to-planner" data-event="Social">Social</span></td>
+                </tr>
+            </table>
         </div>
-        <div class="button-item">
-            <button id="sunday-btn">Sun 14 Sept</button>
+    
+        <!-- Content for Saturday (to be added later) -->
+        <div id="saturday-content" class="day-content" style="display: none;">
+            <h2>Saturday 13 Sept</h2>
+            <!-- Details will be added later -->
         </div>
-    </div>
-
-    <!-- Content for Thursday (default) -->
-    <div id="thursday-content" class="day-content">
-        <h2>Thursday 11 Sept</h2>
-        <table>
-            <tr>
-                <td>7:30 - 10:00 PM</td>
-                <td>Trail In Dance "Step Back In Time"</td>
-            </tr>
-        </table>
-    </div>
-
-    <!-- Content for Friday -->
-    <div id="friday-content" class="day-content" style="display: none;">
-        <h2>Friday 12 Sept</h2>
-        <table>
-            <tr>
-                <td>11:00 - 12:00 PM</td>
-                <td>Leaders Meeting</td>
-            </tr>
-            <tr>
-                <td>12:00 - 12:30 PM</td>
-                <td>Lunch</td>
-            </tr>
-            <tr>
-                <td>12:30 - 1:30 PM</td>
-                <td>AGM</td>
-            </tr>
-            <tr>
-                <td>3:00 - 5:00 PM</td>
-                <td>Choreo Challenge</td>
-            </tr>
-            <tr>
-                <td>6:00 PM</td>
-                <td>Social</td>
-            </tr>
-        </table>
-    </div>
-
-    <!-- Content for Saturday (to be added later) -->
-    <div id="saturday-content" class="day-content" style="display: none;">
-        <h2>Saturday 13 Sept</h2>
-        <!-- Details will be added later -->
-    </div>
-
-    <!-- Content for Sunday -->
-    <div id="sunday-content" class="day-content" style="display: none;">
-        <h2>Sunday 14 Sept</h2>
-        <!-- Details to be added -->
-    </div>
-</main>
-
-<script>
-    // Get all buttons and content divs
-    const thursdayBtn = document.getElementById('thursday-btn');
-    const fridayBtn = document.getElementById('friday-btn');
-    const saturdayBtn = document.getElementById('saturday-btn');
-    const sundayBtn = document.getElementById('sunday-btn');
-
-    const thursdayContent = document.getElementById('thursday-content');
-    const fridayContent = document.getElementById('friday-content');
-    const saturdayContent = document.getElementById('saturday-content');
-    const sundayContent = document.getElementById('sunday-content');
-
-    // Add event listeners to buttons
-    thursdayBtn.addEventListener('click', () => {
-        thursdayContent.style.display = 'block';
-        fridayContent.style.display = 'none';
-        saturdayContent.style.display = 'none';
-        sundayContent.style.display = 'none';
-    });
-
-    fridayBtn.addEventListener('click', () => {
-        thursdayContent.style.display = 'none';
-        fridayContent.style.display = 'block';
-        saturdayContent.style.display = 'none';
-        sundayContent.style.display = 'none';
-    });
-
-    saturdayBtn.addEventListener('click', () => {
-        thursdayContent.style.display = 'none';
-        fridayContent.style.display = 'none';
-        saturdayContent.style.display = 'block';
-        sundayContent.style.display = 'none';
-    });
-
-    sundayBtn.addEventListener('click', () => {
-        thursdayContent.style.display = 'none';
-        fridayContent.style.display = 'none';
-        saturdayContent.style.display = 'none';
-        sundayContent.style.display = 'block';
-    });
-
-    // Set Thursday as default display on page load
-    document.addEventListener('DOMContentLoaded', () => {
-        thursdayContent.style.display = 'block';
-        fridayContent.style.display = 'none';
-        saturdayContent.style.display = 'none';
-        sundayContent.style.display = 'none';
-    });
-</script>
-<nav class="bottom-nav">
-    <ul>
-        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
-        <li><a href="workshops.html"><i class="fas fa-calendar-day"></i> My Planner</a></li>
-        <li><a href="more.html"><i class="fas fa-info-circle"></i> More</a></li>
-    </ul>
-</nav>
-</body>
-</html>
+    
+        <!-- Content for Sunday -->
+        <div id="sunday-content" class="day-content" style="display: none;">
+            <h2>Sunday 14 Sept</h2>
+            <!-- Details to be added -->
+        </div>
+    </main>
+    
+    <script>
+        // Get all buttons and content divs
+        const thursdayBtn = document.getElementById('thursday-btn');
+        const fridayBtn = document.getElementById('friday-btn');
+        const saturdayBtn = document.getElementById('saturday-btn');
+        const sundayBtn = document.getElementById('sunday-btn');
+    
+        const thursdayContent = document.getElementById('thursday-content');
+        const fridayContent = document.getElementById('friday-content');
+        const saturdayContent = document.getElementById('saturday-content');
+        const sundayContent = document.getElementById('sunday-content');
+    
+        // Add event listeners to buttons
+        thursdayBtn.addEventListener('click', () => {
+            thursdayContent.style.display = 'block';
+            fridayContent.style.display = 'none';
+            saturdayContent.style.display = 'none';
+            sundayContent.style.display = 'none';
+        });
+    
+        fridayBtn.addEventListener('click', () => {
+            thursdayContent.style.display = 'none';
+            fridayContent.style.display = 'block';
+            saturdayContent.style.display = 'none';
+            sundayContent.style.display = 'none';
+        });
+    
+        saturdayBtn.addEventListener('click', () => {
+            thursdayContent.style.display = 'none';
+            fridayContent.style.display = 'none';
+            saturdayContent.style.display = 'block';
+            sundayContent.style.display = 'none';
+        });
+    
+        sundayBtn.addEventListener('click', () => {
+            thursdayContent.style.display = 'none';
+            fridayContent.style.display = 'none';
+            saturdayContent.style.display = 'none';
+            sundayContent.style.display = 'block';
+        });
+    
+        // Set Thursday as default display on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            thursdayContent.style.display = 'block';
+            fridayContent.style.display = 'none';
+            saturdayContent.style.display = 'none';
+            sundayContent.style.display = 'none';
+        });
+    
+        // Add to Personal Planner (localStorage)
+        const addToPlanner = document.querySelectorAll('.add-to-planner');
+        addToPlanner.forEach(item => {
+            item.addEventListener('click', function() {
+                const event = this.getAttribute('data-event');
+                let planner = JSON.parse(localStorage.getItem('personalPlanner')) || [];
+                planner.push(event);
+                localStorage.setItem('personalPlanner', JSON.stringify(planner));
+                alert(`${event} has been added to your personal planner.`);
+            });
+        });
+    </script>
+    
+    </body>
+    </html>
