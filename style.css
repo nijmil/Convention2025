@@ -194,7 +194,7 @@ button:hover {
 .more-button-container {
     display: grid; /* Use CSS Grid for layout */
     grid-template-columns: repeat(2, 1fr); /* Create 2 equal-width columns */
-    gap: 1px; /* Space between buttons */
+    gap: 5px; /* Reduced horizontal and vertical space between buttons */
     margin-top: 20px; /* Space above the button grid */
     justify-items: center; /* Center buttons horizontally */
     padding: 0 2px; /* Padding to avoid buttons touching edges */
@@ -217,8 +217,7 @@ button:hover {
     text-align: center; /* Ensure text is centered */
     word-wrap: break-word; /* Prevent long words from overflowing */
     height: 60px; /* Fixed height */
-    width: 400px; /* Full width of the container */
-    max-width: 500px; /* Optional: constrain button width to prevent excessive stretching */
+    width: 100%; /* Buttons take the full grid cell width */
 }
 
 /* Hover effect for the 'More' buttons */
@@ -236,13 +235,11 @@ button:hover {
 /* Ensure 2x2 layout on all screen sizes */
 @media (max-width: 800px) {
     .more-button-container {
-        gap: 10px; /* Maintain space between buttons */
+        gap: 8px; /* Maintain small space between buttons */
         justify-content: center; /* Center the buttons */
-        width: 400px; /* Ensure container takes up full width */
     }
     .more-button-container button {
-        width: 400px; /* Ensure button takes full width of container */
-        max-width: 500px; /* Keep the max width for mobile */
+        width: 100%; /* Buttons take full width of the grid cell */
         height: 50px; /* Maintain consistent height */
         font-size: 16px; /* Adjust font size for better fit */
     }
