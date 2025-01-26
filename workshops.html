@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personal Planner</title>
+    <title>Your Personal Planner</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -28,7 +28,7 @@
     if (planner.length > 0) {
         planner.forEach(event => {
             const listItem = document.createElement('li');
-            listItem.textContent = event;
+            listItem.textContent = `${event.time}: ${event.name}`; // Display time and event
             plannerList.appendChild(listItem);
         });
     } else {
@@ -38,5 +38,6 @@
 
 </body>
 </html>
+
 
 
