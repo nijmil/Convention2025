@@ -242,7 +242,7 @@ button:hover {
     }
     .more-button-container button {
         width: 100%; /* Ensure button takes full width of container */
-        max-width: 350px; /* Keep the max width for mobile */
+        max-width: 500px; /* Keep the max width for mobile */
         height: 50px; /* Maintain consistent height */
         font-size: 16px; /* Adjust font size for better fit */
     }
