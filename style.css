@@ -43,19 +43,18 @@ h2 {
 /* Button container styling for menu-like buttons */
 .button-container {
     display: flex; /* Use flexbox for horizontal alignment */
-    justify-content: space-between; /* Evenly space the buttons horizontally */
+    justify-content: space-evenly; /* Evenly space the buttons horizontally */
     margin-top: 20px; /* Add spacing below the logo */
     gap: 10px; /* Space between buttons */
     width: 100%; /* Ensure container takes full width */
     margin: 0 auto; /* Center the container */
+    box-sizing: border-box; /* Include padding in width calculations */
 }
 
 /* Styling for each button */
 .button-item {
-    flex: 1; /* Ensure buttons take equal space */
+    flex-grow: 1; /* Buttons will grow to take equal space */
     text-align: center;
-    min-width: 150px; /* Minimum width for buttons */
-    max-width: 200px; /* Max width for buttons */
 }
 
 /* Basic styling for buttons */
@@ -75,6 +74,7 @@ button {
     justify-content: center; /* Horizontally center text */
     white-space: normal; /* Allow wrapping of text */
     word-wrap: break-word; /* Prevent overflow of long text */
+    box-sizing: border-box; /* Include padding in width calculations */
 }
 
 /* Button hover effect */
