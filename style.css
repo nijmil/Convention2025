@@ -1,234 +1,137 @@
-/* Reset some basic styles */
+/* Reset Styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Body styling */
+/* Body */
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f9;
     color: #333;
     line-height: 1.6;
-    padding: 20px;
-    padding-bottom: 60px; /* Add space for the fixed navigation */
+    padding-bottom: 60px;
 }
 
-/* Header styling */
+/* Header */
 header {
     text-align: center;
 }
 
 header img {
-    display: block;
-    margin: 0 auto;
-    max-width: 200px; /* Smaller logo width */
+    max-width: 200px;
     height: auto;
+    margin: 20px auto;
 }
 
-/* Main section styling */
+/* Main Section */
 main {
-    margin-top: 20px;
+    margin: 20px;
 }
 
-section {
-    margin-bottom: 40px;
-}
-
-h2 {
-    color: black;
-}
-
-/* Button container styling for menu-like buttons */
 .button-container {
-    display: flex; /* Use flexbox for horizontal alignment */
-    justify-content: space-between; /* Distribute space between buttons */
-    margin-top: 20px; /* Add spacing below the logo */
-    gap: 10px; /* Space between buttons */
-    max-width: 100%; /* Ensure container takes full width */
-    margin: 0 auto; /* Center the container */
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
 }
 
-/* Styling for each button */
-.button-item {
-    flex: 1; /* Ensure buttons are evenly spaced */
-    text-align: center;
-}
-
-/* Basic styling for buttons */
-button {
-    background-color: black; /* Black background */
-    color: #cbb643; /* Font color */
-    border: 2px solid #cbb643; /* Outline with gold color */
-    font-size: 18px; /* Slightly larger font size */
-    cursor: pointer;
+.button-item button {
+    background-color: black;
+    color: #cbb643;
+    border: 2px solid #cbb643;
     border-radius: 8px;
-    padding: 12px 20px; /* Adjust padding for better size */
-    transition: background-color 0.3s ease, color 0.3s ease;
-    width: 100%; /* Make button fill its container */
-    max-width: 250px; /* Set max width to avoid buttons getting too wide */
-    height: 50px; /* Ensure buttons have a consistent height */
-    display: flex; /* Use flexbox for text centering */
-    align-items: center; /* Vertically center text */
-    justify-content: center; /* Horizontally center text */
-    white-space: normal; /* Allow wrapping of text */
+    font-size: 18px;
+    padding: 12px;
+    cursor: pointer;
+    flex: 1;
+    transition: 0.3s;
 }
 
 button:hover {
-    background-color: #cbb643; /* Gold background on hover */
-    color: black; /* Black font on hover */
-    border-color: #cbb643; /* Maintain gold outline on hover */
+    background-color: #cbb643;
+    color: black;
 }
 
-/* Register image adjustment */
+/* Registration */
 .register-image {
-    max-width: 100%; /* Ensure the image fits the container */
-    height: auto; /* Maintain aspect ratio */
+    max-width: 100%;
+    height: auto;
     display: block;
-    margin: 0 auto; /* Center the image */
+    margin: 20px auto;
 }
 
-/* Registration button container */
 .registration-buttons {
     display: flex;
-    flex-direction: column; /* Stack the buttons vertically */
-    gap: 15px; /* Space between buttons */
-    margin-top: 20px;
+    flex-direction: column;
+    gap: 10px;
 }
 
-/* Register buttons */
 .register-button {
-    display: block;
-    background-color: black; /* Same as venue buttons */
-    color: #cbb643; /* Same as venue buttons */
     text-align: center;
-    padding: 15px;
+    background-color: black;
+    color: #cbb643;
+    padding: 12px;
     border-radius: 8px;
-    font-size: 18px;
     text-decoration: none;
-    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-    border: 2px solid #cbb643; /* Same border as venue buttons */
+    font-size: 16px;
+    border: 2px solid #cbb643;
 }
 
 .register-button:hover {
-    background-color: #cbb643; /* Gold background on hover */
-    color: black; /* Black font on hover */
-    border-color: #cbb643; /* Maintain gold border on hover */
+    background-color: #cbb643;
+    color: black;
 }
 
-/* Bottom navigation styling */
+/* Bottom Navigation */
 .bottom-nav {
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
-    background-color: #cbb643; /* Gold background */
+    background-color: #cbb643;
     padding: 10px 0;
     text-align: center;
 }
 
 .bottom-nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+    list-style: none;
     display: flex;
-    justify-content: space-around; /* Space out the items */
+    justify-content: space-around;
 }
 
 .bottom-nav ul li {
-    display: inline-block;
-}
-
-/* Dropdown styling */
-.bottom-nav ul .dropdown {
     position: relative;
 }
 
-.bottom-nav ul .dropdown .dropdown-toggle {
-    cursor: pointer;
+.bottom-nav ul li a {
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
 }
 
-.bottom-nav ul .dropdown .dropdown-menu {
-    display: none; /* Initially hide the dropdown menu */
+.dropdown-menu {
+    display: none;
     position: absolute;
-    bottom: 50px; /* Adjust positioning relative to the parent item */
-    left: 0;
-    background-color: #cbb643; /* Match the gold color */
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background: white;
+    list-style: none;
     padding: 10px;
-    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    top: 30px;
+    left: 0;
+    width: max-content;
+    z-index: 10;
 }
 
-.bottom-nav ul .dropdown .dropdown-menu li {
+.dropdown-menu li {
     margin: 5px 0;
 }
 
-.bottom-nav ul .dropdown .dropdown-menu li a {
-    color: black; /* Black text for dropdown items */
+.dropdown-menu li a {
+    color: black;
     text-decoration: none;
-    font-size: 14px;
-    display: block;
-    padding: 8px 12px;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
 }
 
-.bottom-nav ul .dropdown .dropdown-menu li a:hover {
-    background-color: #f1e18b; /* Lighter gold on hover */
-}
-
-/* Show dropdown on hover */
-.bottom-nav ul .dropdown:hover .dropdown-menu {
+.dropdown-menu.show {
     display: block;
 }
-
-.bottom-nav ul li a {
-    color: black; /* Black text */
-    text-decoration: none;
-    font-size: 16px;
-    font-weight: bold;
-    padding: 10px 15px;
-    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
-    display: flex;
-    align-items: center;
-}
-
-.bottom-nav ul li a i {
-    margin-right: 8px; /* Space between icon and text */
-}
-
-.bottom-nav ul li a:hover {
-    background-color: #f1e18b; /* Slightly lighter gold for hover */
-    color: black; /* Maintain black text */
-    border-radius: 4px;
-}
-
-/* Responsive Design Adjustments */
-@media (max-width: 600px) {
-    .button-container {
-        gap: 10px; /* Maintain space between buttons */
-        justify-content: center; /* Center the buttons */
-        width: 100%; /* Ensure container takes up full width */
-    }
-
-    button {
-        width: 100%; /* Ensure button takes full width of container */
-        max-width: 250px; /* Keep the max width for mobile */
-        height: 50px; /* Maintain consistent height */
-        font-size: 16px; /* Adjust font size for better fit */
-    }
-
-    .registration-buttons {
-        gap: 10px; /* Adjust the gap between registration buttons */
-    }
-
-    .register-button {
-        padding: 12px;
-        font-size: 16px;
-    }
-}
-
-
-
