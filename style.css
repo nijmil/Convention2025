@@ -43,20 +43,19 @@ h2 {
 /* Button container styling for menu-like buttons */
 .button-container {
     display: flex; /* Use flexbox for horizontal alignment */
-    justify-content: space-evenly; /* Evenly space the buttons */
+    justify-content: space-between; /* Evenly space the buttons horizontally */
     margin-top: 20px; /* Add spacing below the logo */
     gap: 10px; /* Space between buttons */
-    max-width: 100%; /* Ensure container takes full width */
+    width: 100%; /* Ensure container takes full width */
     margin: 0 auto; /* Center the container */
-    flex-wrap: wrap; /* Allow buttons to wrap to next line if needed */
 }
 
 /* Styling for each button */
 .button-item {
-    flex: 1; /* Ensure buttons are evenly spaced */
+    flex: 1; /* Ensure buttons take equal space */
     text-align: center;
-    min-width: 180px; /* Set minimum width for each button */
-    max-width: 300px; /* Set a max-width for buttons */
+    min-width: 150px; /* Minimum width for buttons */
+    max-width: 200px; /* Max width for buttons */
 }
 
 /* Basic styling for buttons */
@@ -64,13 +63,13 @@ button {
     background-color: black; /* Black background */
     color: #cbb643; /* Font color */
     border: 2px solid #cbb643; /* Outline with gold color */
-    font-size: 18px; /* Slightly larger font size */
+    font-size: 16px; /* Adjust font size */
     cursor: pointer;
     border-radius: 8px;
     padding: 12px 20px; /* Adjust padding for better size */
     transition: background-color 0.3s ease, color 0.3s ease;
     width: 100%; /* Make button fill its container */
-    height: 50px; /* Ensure buttons have a consistent height */
+    height: 50px; /* Consistent button height */
     display: flex; /* Use flexbox for text centering */
     align-items: center; /* Vertically center text */
     justify-content: center; /* Horizontally center text */
