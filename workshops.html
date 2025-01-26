@@ -118,10 +118,20 @@
 
     // Retrieve and display the events for a specific day
     function displayEvents(day) {
-        // Clear previous table content
-        const table = document.querySelector(`#${day.toLowerCase().replace(' ', '-')}-table`);
-        table.innerHTML = '';  // Clear the table
+        // Convert day string to lowercase and replace spaces with hyphens for matching table ID
+        const tableId = day.toLowerCase().replace(' ', '-') + '-table';
+        const table = document.getElementById(tableId);
         
+        // Ensure the table exists before trying to modify it
+        if (!table) {
+            console.error('Table not found for:', day);
+            return;
+        }
+        
+        // Clear previous table content
+        table.innerHTML = '';
+
+        // Get stored events from localStorage
         const planner = JSON.parse(localStorage.getItem('personalPlanner')) || [];
         const eventsForDay = planner.filter(event => event.day === day);
 
@@ -175,4 +185,5 @@
 
 </body>
 </html>
+
 
