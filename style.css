@@ -193,59 +193,56 @@ button:hover {
 /* Styling specific to the 'More' page buttons */
 .more-button-container {
     display: grid; /* Use CSS Grid for layout */
-    grid-template-columns: repeat(2, 1fr); /* Always create 2 equal-width columns */
+    grid-template-columns: repeat(2, 1fr); /* Create 2 equal-width columns */
     gap: 10px; /* Reduced gap between buttons */
-    margin-top: 20px;
+    margin-top: 20px; /* Space above the button grid */
     justify-items: center; /* Center buttons horizontally in grid cells */
-    padding: 0 10px;
-    max-width: 90%; /* Limit the width of the container to avoid too much space */
+    padding: 0 10px; /* Padding to avoid buttons touching edges */
+    max-width: 90%; /* Limit the width of the container */
 }
 
-/* Styling for each button */
-.more-button-item {
-    flex: 1 1 0%; /* Allow flex-grow but make sure buttons take equal space */
-    text-align: center;
-}
-
+/* Styling for each button in the 'More' section */
 .more-button-container button {
     background-color: black; /* Black background */
-    color: #cbb643; /* Gold text */
+    color: #cbb643; /* Gold text color */
     border: 2px solid #cbb643; /* Gold border */
     font-size: 16px; /* Font size for readability */
-    cursor: pointer;
-    border-radius: 8px;
-    width: 110%; /* Increase width slightly, but not too much */
-    height: 60px; /* Adjust height for shorter buttons */
-    display: flex; /* Flexbox for centering */
-    align-items: center; /* Center text vertically */
-    justify-content: center; /* Center text horizontally */
+    cursor: pointer; /* Pointer on hover */
+    border-radius: 8px; /* Rounded corners */
+    width: 100%; /* Ensure the button fills the container */
+    height: 60px; /* Taller button to match the existing styling */
+    display: flex; /* Flexbox for centering text */
+    align-items: center; /* Vertically center text */
+    justify-content: center; /* Horizontally center text */
     box-sizing: border-box; /* Include padding and border in width */
+    padding: 12px 20px; /* Adjust padding for button size */
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; /* Smooth transitions */
     text-align: center; /* Ensure text is centered */
     word-wrap: break-word; /* Prevent long words from overflowing */
-    padding: 10px 30px; /* Increase horizontal padding to make button wider */
-    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Icon styling for buttons */
-.more-button-container button i {
-    margin-right: 8px; /* Add space between icon and text */
-}
-
-/* Button hover effect */
+/* Hover effect for the 'More' buttons */
 .more-button-container button:hover {
     background-color: #cbb643; /* Gold background on hover */
     color: black; /* Black text on hover */
     border-color: #cbb643; /* Maintain gold border */
 }
 
-/* Ensure 2x2 layout always remains */
+/* Icon styling for buttons */
+.more-button-container button i {
+    margin-right: 8px; /* Space between icon and text */
+}
+
+/* Ensure 2x2 layout on all screen sizes */
 @media (max-width: 600px) {
     .more-button-container {
-        grid-template-columns: repeat(2, 1fr); /* Enforce 2 columns */
+        grid-template-columns: repeat(2, 1fr); /* Maintain 2 columns on mobile */
     }
 
     .more-button-container button {
-        width: 90%; /* Make buttons slightly narrower on small screens */
+        width: 90%; /* Slightly narrower buttons on smaller screens */
+        height: 50px; /* Adjust height for smaller screens */
+        font-size: 14px; /* Adjust font size for mobile devices */
     }
 }
 
