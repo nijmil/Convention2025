@@ -234,7 +234,7 @@ button:hover {
 }
 
 /* Ensure 2x2 layout on all screen sizes */
-@media (max-width: 768px) {
+@media (max-width: 800px) {
     .more-button-container {
         gap: 10px; /* Maintain space between buttons */
         justify-content: center; /* Center the buttons */
