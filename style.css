@@ -194,13 +194,14 @@ button:hover {
 .more-button-container {
     display: grid; /* Use CSS Grid for layout */
     grid-template-columns: repeat(2, 1fr); /* Always create 2 equal-width columns */
-    gap: 20px; /* Add space between buttons */
+    gap: 10px; /* Reduced gap between buttons */
     margin-top: 20px;
     justify-items: center; /* Center buttons horizontally in grid cells */
     padding: 0 10px;
+    max-width: 90%; /* Limit the width of the container to avoid too much space */
 }
 
-
+/* Styling for each button */
 .more-button-item {
     flex: 1 1 0%; /* Allow flex-grow but make sure buttons take equal space */
     text-align: center;
@@ -213,7 +214,7 @@ button:hover {
     font-size: 16px; /* Font size for readability */
     cursor: pointer;
     border-radius: 8px;
-    width: 100%; /* Button spans its container */
+    width: 110%; /* Increase width slightly, but not too much */
     height: 60px; /* Adjust height for shorter buttons */
     display: flex; /* Flexbox for centering */
     align-items: center; /* Center text vertically */
@@ -225,10 +226,12 @@ button:hover {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Icon styling for buttons */
 .more-button-container button i {
     margin-right: 8px; /* Add space between icon and text */
 }
 
+/* Button hover effect */
 .more-button-container button:hover {
     background-color: #cbb643; /* Gold background on hover */
     color: black; /* Black text on hover */
@@ -240,7 +243,12 @@ button:hover {
     .more-button-container {
         grid-template-columns: repeat(2, 1fr); /* Enforce 2 columns */
     }
+
+    .more-button-container button {
+        width: 90%; /* Make buttons slightly narrower on small screens */
+    }
 }
+
 
 /* Convention Information Section */
 #convention_info-container {
