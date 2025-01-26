@@ -197,7 +197,7 @@ button:hover {
     gap: 1px; /* Space between buttons */
     margin-top: 20px; /* Space above the button grid */
     justify-items: center; /* Center buttons horizontally */
-    padding: 0 5px; /* Padding to avoid buttons touching edges */
+    padding: 0 2px; /* Padding to avoid buttons touching edges */
     max-width: 100%; /* Limit the width of the container */
 }
 
@@ -218,7 +218,7 @@ button:hover {
     word-wrap: break-word; /* Prevent long words from overflowing */
     height: 60px; /* Fixed height */
     width: 100%; /* Full width of the container */
-    max-width: 400500px; /* Optional: constrain button width to prevent excessive stretching */
+    max-width: 500px; /* Optional: constrain button width to prevent excessive stretching */
 }
 
 /* Hover effect for the 'More' buttons */
