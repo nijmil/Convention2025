@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Planner</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>Your Personal Planner</h1>
+</header>
+
+<main>
+    <div id="planner-content">
+        <h2>Your Selected Workshops</h2>
+        <ul id="planner-list"></ul>
+    </div>
+</main>
+
+<script>
+    // Retrieve the personal planner from localStorage
+    const plannerList = document.getElementById('planner-list');
+    const planner = JSON.parse(localStorage.getItem('personalPlanner')) || [];
+
+    // If there are events in the planner, display them
+    if (planner.length > 0) {
+        planner.forEach(event => {
+            const listItem = document.createElement('li');
+            listItem.textContent = event;
+            plannerList.appendChild(listItem);
+        });
+    } else {
+        plannerList.innerHTML = '<li>No events selected yet.</li>';
+    }
+</script>
+
+</body>
+</html>
