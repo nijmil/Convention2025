@@ -190,7 +190,60 @@ button:hover {
     }
 }
 
+/* Styling specific to the 'More' page buttons */
+.more-button-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+    justify-content: space-around; /* Distribute buttons evenly */
+    gap: 15px; /* Space between buttons */
+    margin-top: 20px;
+    padding: 0 10px; /* Add padding to prevent overflow */
+}
 
+.more-button-item {
+    flex: 1 1 200px; /* Ensure buttons take equal space and adjust to smaller screens */
+    text-align: center;
+    max-width: 250px; /* Prevent buttons from growing too wide */
+    min-width: 150px; /* Ensure buttons don’t shrink too small */
+}
+
+.more-button-container button {
+    background-color: black; /* Black background */
+    color: #cbb643; /* Gold text */
+    border: 2px solid #cbb643; /* Gold border */
+    font-size: 16px; /* Adjust font size for readability */
+    cursor: pointer;
+    border-radius: 8px;
+    padding: 12px 20px; /* Padding inside the button */
+    transition: background-color 0.3s ease, color 0.3s ease;
+    width: 100%; /* Ensure button spans its container */
+    height: 60px; /* Uniform height for all buttons */
+    display: flex; /* Flexbox for centering */
+    align-items: center; /* Vertical alignment */
+    justify-content: center; /* Horizontal alignment */
+    box-sizing: border-box; /* Include padding and border in width */
+}
+
+.more-button-container button i {
+    margin-right: 8px; /* Add space between icon and text */
+}
+
+.more-button-container button:hover {
+    background-color: #cbb643; /* Gold background on hover */
+    color: black; /* Black text on hover */
+    border-color: #cbb643; /* Maintain gold border */
+}
+
+/* Responsive design for the 'More' page */
+@media (max-width: 600px) {
+    .more-button-container {
+        flex-direction: column; /* Stack buttons vertically on small screens */
+        align-items: center; /* Center the buttons */
+    }
+    .more-button-item {
+        max-width: 100%; /* Allow buttons to take full width on smaller screens */
+    }
+}
 
 
 
