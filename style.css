@@ -1,132 +1,189 @@
-/* Reset Styles */
+/* Reset some basic styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Body */
+/* Body styling */
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f9;
     color: #333;
     line-height: 1.6;
-    padding-bottom: 60px;
+    padding: 20px;
+    padding-bottom: 60px; /* Add space for the fixed navigation */
 }
 
-/* Header */
+/* Header styling */
 header {
     text-align: center;
 }
 
 header img {
-    max-width: 200px;
+    display: block;
+    margin: 0 auto;
+    max-width: 200px; /* Smaller logo width */
     height: auto;
-    margin: 20px auto;
 }
 
-/* Main Section */
+/* Main section styling */
 main {
-    margin: 20px;
+    margin-top: 20px;
 }
 
-/* Button Container */
-.button-container {
-    display: flex;
-    justify-content: space-between; /* Ensure buttons are spaced evenly */
-    gap: 10px;
-    flex-wrap: wrap; /* Allow buttons to wrap to the next line if needed */
+section {
+    margin-bottom: 40px;
 }
 
-/* Button Styles */
-.button-item {
-    flex: 1; /* Ensure each button occupies equal space */
-    min-width: 150px; /* Set a minimum width for buttons */
-    max-width: 300px; /* Set a maximum width for buttons */
-    display: flex;
-    justify-content: center; /* Center text horizontally */
-    align-items: center; /* Center text vertically */
-}
-
-.button-item button {
-    background-color: black;
-    color: #cbb643;
-    border: 2px solid #cbb643;
-    border-radius: 8px;
-    font-size: 18px;
-    padding: 15px; /* Add padding for better button size */
-    width: 100%; /* Ensure buttons take up full width of their container */
-    text-align: center;
-    white-space: normal; /* Allow text to wrap */
-    word-wrap: break-word; /* Prevent overflow of long text */
-    height: 50px; /* Fixed height for consistent button size */
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-/* Button Hover Effects */
-button:hover {
-    background-color: #cbb643;
+h2 {
     color: black;
 }
 
-/* Registration Section */
-.register-image {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin: 20px auto;
+/* Button container styling for menu-like buttons */
+.button-container {
+    display: flex; /* Use flexbox for horizontal alignment */
+    justify-content: space-between; /* Distribute space between buttons */
+    margin-top: 20px; /* Add spacing below the logo */
+    gap: 10px; /* Space between buttons */
+    max-width: 100%; /* Ensure container takes full width */
+    margin: 0 auto; /* Center the container */
 }
 
+/* Styling for each button */
+.button-item {
+    flex: 1; /* Ensure buttons are evenly spaced */
+    text-align: center;
+}
+
+/* Basic styling for buttons */
+button {
+    background-color: black; /* Black background */
+    color: #cbb643; /* Font color */
+    border: 2px solid #cbb643; /* Outline with gold color */
+    font-size: 18px; /* Slightly larger font size */
+    cursor: pointer;
+    border-radius: 8px;
+    padding: 12px 20px; /* Adjust padding for better size */
+    transition: background-color 0.3s ease, color 0.3s ease;
+    width: 100%; /* Make button fill its container */
+    max-width: 250px; /* Set max width to avoid buttons getting too wide */
+    height: 50px; /* Ensure buttons have a consistent height */
+    display: flex; /* Use flexbox for text centering */
+    align-items: center; /* Vertically center text */
+    justify-content: center; /* Horizontally center text */
+    white-space: normal; /* Allow wrapping of text */
+}
+
+button:hover {
+    background-color: #cbb643; /* Gold background on hover */
+    color: black; /* Black font on hover */
+    border-color: #cbb643; /* Maintain gold outline on hover */
+}
+
+/* Register image adjustment */
+.register-image {
+    max-width: 100%; /* Ensure the image fits the container */
+    height: auto; /* Maintain aspect ratio */
+    display: block;
+    margin: 0 auto; /* Center the image */
+}
+
+/* Registration button container */
 .registration-buttons {
     display: flex;
-    flex-direction: column;
-    gap: 10px;
+    flex-direction: column; /* Stack the buttons vertically */
+    gap: 15px; /* Space between buttons */
+    margin-top: 20px;
 }
 
+/* Register buttons */
 .register-button {
+    display: block;
+    background-color: black; /* Same as venue buttons */
+    color: #cbb643; /* Same as venue buttons */
     text-align: center;
-    background-color: black;
-    color: #cbb643;
-    padding: 12px;
+    padding: 15px;
     border-radius: 8px;
+    font-size: 18px;
     text-decoration: none;
-    font-size: 16px;
-    border: 2px solid #cbb643;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    border: 2px solid #cbb643; /* Same border as venue buttons */
 }
 
 .register-button:hover {
-    background-color: #cbb643;
-    color: black;
+    background-color: #cbb643; /* Gold background on hover */
+    color: black; /* Black font on hover */
+    border-color: #cbb643; /* Maintain gold border on hover */
 }
 
-/* Bottom Navigation */
 .bottom-nav {
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
-    background-color: #cbb643;
+    background-color: #cbb643; /* Gold background */
     padding: 10px 0;
     text-align: center;
 }
 
 .bottom-nav ul {
-    list-style: none;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-around; /* Space out the items */
 }
 
 .bottom-nav ul li {
-    margin: 0;
+    display: inline-block;
 }
 
 .bottom-nav ul li a {
+    color: black; /* Black text */
     text-decoration: none;
-    color: black;
     font-size: 16px;
+    font-weight: bold;
+    padding: 10px 15px;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+    display: flex;
+    align-items: center;
 }
 
+.bottom-nav ul li a i {
+    margin-right: 8px; /* Space between icon and text */
+}
+
+.bottom-nav ul li a:hover {
+    background-color: #f1e18b; /* Slightly lighter gold for hover */
+    color: black; /* Maintain black text */
+    border-radius: 4px;
+}
+
+/* Responsive Design Adjustments */
+@media (max-width: 600px) {
+    .button-container {
+        gap: 10px; /* Maintain space between buttons */
+        justify-content: center; /* Center the buttons */
+        width: 100%; /* Ensure container takes up full width */
+    }
+
+    button {
+        width: 100%; /* Ensure button takes full width of container */
+        max-width: 250px; /* Keep the max width for mobile */
+        height: 50px; /* Maintain consistent height */
+        font-size: 16px; /* Adjust font size for better fit */
+    }
+
+    .registration-buttons {
+        gap: 10px; /* Adjust the gap between registration buttons */
+    }
+
+    .register-button {
+        padding: 12px;
+        font-size: 16px;
+    }
+}
 
 
 
