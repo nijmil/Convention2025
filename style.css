@@ -234,7 +234,7 @@ button:hover {
 }
 
 /* Ensure 2x2 layout on all screen sizes */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
     .more-button-container {
         gap: 10px; /* Maintain space between buttons */
         justify-content: center; /* Center the buttons */
@@ -242,7 +242,7 @@ button:hover {
     }
     .more-button-container button {
         width: 100%; /* Ensure button takes full width of container */
-        max-width: 250px; /* Keep the max width for mobile */
+        max-width: 300px; /* Keep the max width for mobile */
         height: 50px; /* Maintain consistent height */
         font-size: 16px; /* Adjust font size for better fit */
     }
