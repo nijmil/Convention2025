@@ -215,14 +215,14 @@ button:hover {
     cursor: pointer;
     border-radius: 8px;
     width: 100%; /* Button spans its container */
-    height: 100px; /* Uniform height */
+    height: 60px; /* Adjust height for shorter buttons */
     display: flex; /* Flexbox for centering */
     align-items: center; /* Center text vertically */
     justify-content: center; /* Center text horizontally */
     box-sizing: border-box; /* Include padding and border in width */
     text-align: center; /* Ensure text is centered */
     word-wrap: break-word; /* Prevent long words from overflowing */
-    padding: 10px; /* Padding inside the button */
+    padding: 10px 30px; /* Increase horizontal padding to make button wider */
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
