@@ -238,10 +238,10 @@ button:hover {
     .more-button-container {
         gap: 10px; /* Maintain space between buttons */
         justify-content: center; /* Center the buttons */
-        width: 100%; /* Ensure container takes up full width */
+        width: 400px; /* Ensure container takes up full width */
     }
     .more-button-container button {
-        width: 100%; /* Ensure button takes full width of container */
+        width: 400px; /* Ensure button takes full width of container */
         max-width: 500px; /* Keep the max width for mobile */
         height: 50px; /* Maintain consistent height */
         font-size: 16px; /* Adjust font size for better fit */
