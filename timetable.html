@@ -3,117 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Event Timetable</title>
+    <title>Timetable</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header>
-    <h1>Event Timetable</h1>
+    <h1>Convention Timetable</h1>
 </header>
 
 <main>
-    <div id="date-buttons">
-        <button class="date-btn" data-date="Thurs 11 Sept">Thurs 11 Sept</button>
-        <button class="date-btn" data-date="Fri 12 Sept">Fri 12 Sept</button>
-        <button class="date-btn" data-date="Sat 13 Sept">Sat 13 Sept</button>
-        <button class="date-btn" data-date="Sun 14 Sept">Sun 14 Sept</button>
+    <!-- Button container for date selection -->
+    <div class="button-container">
+        <div class="button-item">
+            <button id="thursday-btn">Thurs 11 Sept</button>
+        </div>
+        <div class="button-item">
+            <button id="friday-btn">Fri 12 Sept</button>
+        </div>
+        <div class="button-item">
+            <button id="saturday-btn">Sat 13 Sept</button>
+        </div>
+        <div class="button-item">
+            <button id="sunday-btn">Sun 14 Sept</button>
+        </div>
     </div>
 
-    <div id="event-table">
+    <!-- Content for Thursday (default) -->
+    <div id="thursday-content" class="day-content">
+        <h2>Thursday 11 Sept</h2>
         <table>
-            <thead>
-                <tr>
-                    <th>Time</th>
-                    <th>Event</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody id="event-list"></tbody>
+            <tr>
+                <td>7:30 - 10:00 PM</td>
+                <td>Trail In Dance "Step Back In Time"</td>
+            </tr>
         </table>
+    </div>
+
+    <!-- Content for Friday -->
+    <div id="friday-content" class="day-content" style="display: none;">
+        <h2>Friday 12 Sept</h2>
+        <table>
+            <tr>
+                <td>11:00 - 12:00 PM</td>
+                <td>Leaders Meeting</td>
+            </tr>
+            <tr>
+                <td>12:00 - 12:30 PM</td>
+                <td>Lunch</td>
+            </tr>
+            <tr>
+                <td>12:30 - 1:30 PM</td>
+                <td>AGM</td>
+            </tr>
+            <tr>
+                <td>3:00 - 5:00 PM</td>
+                <td>Choreo Challenge</td>
+            </tr>
+            <tr>
+                <td>6:00 PM</td>
+                <td>Social</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Content for Saturday (to be added later) -->
+    <div id="saturday-content" class="day-content" style="display: none;">
+        <h2>Saturday 13 Sept</h2>
+        <!-- Details will be added later -->
+    </div>
+
+    <!-- Content for Sunday -->
+    <div id="sunday-content" class="day-content" style="display: none;">
+        <h2>Sunday 14 Sept</h2>
+        <!-- Details to be added -->
     </div>
 </main>
 
 <script>
-    const eventList = document.getElementById('event-list');
-    const dateButtons = document.querySelectorAll('.date-btn');
-    
-    // Event data structure
-    const events = {
-        "Thurs 11 Sept": [
-            { time: "10:00 AM", event: "AGM" },
-            { time: "11:00 AM", event: "Workshop 1" },
-            { time: "1:00 PM", event: "Lunch Break" }
-        ],
-        "Fri 12 Sept": [
-            { time: "9:00 AM", event: "Keynote Speaker" },
-            { time: "11:00 AM", event: "Workshop 2" },
-            { time: "2:00 PM", event: "Panel Discussion" }
-        ],
-        "Sat 13 Sept": [
-            { time: "10:00 AM", event: "Workshop 3" },
-            { time: "12:00 PM", event: "Lunch Break" },
-            { time: "1:30 PM", event: "Closing Remarks" }
-        ],
-        "Sun 14 Sept": [
-            { time: "9:00 AM", event: "Final Workshop" },
-            { time: "11:00 AM", event: "Award Ceremony" }
-        ]
-    };
+    // Get all buttons and content divs
+    const thursdayBtn = document.getElementById('thursday-btn');
+    const fridayBtn = document.getElementById('friday-btn');
+    const saturdayBtn = document.getElementById('saturday-btn');
+    const sundayBtn = document.getElementById('sunday-btn');
 
-    // Function to display events based on the selected date
-    function displayEvents(date) {
-        // Clear existing events
-        eventList.innerHTML = "";
+    const thursdayContent = document.getElementById('thursday-content');
+    const fridayContent = document.getElementById('friday-content');
+    const saturdayContent = document.getElementById('saturday-content');
+    const sundayContent = document.getElementById('sunday-content');
 
-        // Retrieve the events for the selected date
-        const selectedEvents = events[date] || [];
-
-        selectedEvents.forEach(event => {
-            const row = document.createElement('tr');
-            row.innerHTML = `
-                <td>${event.time}</td>
-                <td>${event.event}</td>
-                <td><button class="add-event-btn" data-time="${event.time}" data-event="${event.event}">Add to Planner</button></td>
-            `;
-            eventList.appendChild(row);
-        });
-    }
-
-    // Event listener for date buttons
-    dateButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const selectedDate = this.getAttribute('data-date');
-            displayEvents(selectedDate);
-        });
+    // Add event listeners to buttons
+    thursdayBtn.addEventListener('click', () => {
+        thursdayContent.style.display = 'block';
+        fridayContent.style.display = 'none';
+        saturdayContent.style.display = 'none';
+        sundayContent.style.display = 'none';
     });
 
-    // Event listener for 'Add to Planner' buttons
-    eventList.addEventListener('click', function(event) {
-        if (event.target && event.target.classList.contains('add-event-btn')) {
-            const eventTime = event.target.getAttribute('data-time');
-            const eventName = event.target.getAttribute('data-event');
-            
-            // Create an object with the event details
-            const eventDetails = {
-                time: eventTime,
-                name: eventName
-            };
+    fridayBtn.addEventListener('click', () => {
+        thursdayContent.style.display = 'none';
+        fridayContent.style.display = 'block';
+        saturdayContent.style.display = 'none';
+        sundayContent.style.display = 'none';
+    });
 
-            // Retrieve the current planner or initialize it
-            let planner = JSON.parse(localStorage.getItem('personalPlanner')) || [];
+    saturdayBtn.addEventListener('click', () => {
+        thursdayContent.style.display = 'none';
+        fridayContent.style.display = 'none';
+        saturdayContent.style.display = 'block';
+        sundayContent.style.display = 'none';
+    });
 
-            // Add the new event to the planner
-            planner.push(eventDetails);
+    sundayBtn.addEventListener('click', () => {
+        thursdayContent.style.display = 'none';
+        fridayContent.style.display = 'none';
+        saturdayContent.style.display = 'none';
+        sundayContent.style.display = 'block';
+    });
 
-            // Save the updated planner to localStorage
-            localStorage.setItem('personalPlanner', JSON.stringify(planner));
-
-            alert(`${eventName} at ${eventTime} added to your planner!`);
-        }
+    // Set Thursday as default display on page load
+    document.addEventListener('DOMContentLoaded', () => {
+        thursdayContent.style.display = 'block';
+        fridayContent.style.display = 'none';
+        saturdayContent.style.display = 'none';
+        sundayContent.style.display = 'none';
     });
 </script>
 
 </body>
 </html>
-
