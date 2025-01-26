@@ -55,7 +55,7 @@ h2 {
 
 /* Styling for each button */
 .button-item {
-    flex: 1 1 30%; /* Each button takes up 30% of the container width */
+    flex: 1 1 0%; /* Allow flex-grow but make sure buttons take equal space */
     text-align: center;
 }
 
@@ -69,7 +69,7 @@ button {
     border-radius: 8px;
     padding: 12px 20px; /* Adjust padding for better size */
     transition: background-color 0.3s ease, color 0.3s ease;
-    width: 100%; /* Make button fill its container */
+    width: 100%; /* Ensure button fills its container */
     height: 50px; /* Consistent button height */
     display: flex; /* Use flexbox for text centering */
     align-items: center; /* Vertically center text */
@@ -189,6 +189,7 @@ button:hover {
         font-size: 16px;
     }
 }
+
 
 
 
