@@ -194,7 +194,7 @@ button:hover {
 .more-button-container {
     display: grid; /* Use CSS Grid for layout */
     grid-template-columns: repeat(2, 1fr); /* Create 2 equal-width columns */
-    gap: 5px; /* Reduced horizontal and vertical space between buttons */
+    gap: 2px; /* Reduced horizontal and vertical space between buttons */
     margin-top: 20px; /* Space above the button grid */
     justify-items: center; /* Center buttons horizontally */
     padding: 0 2px; /* Padding to avoid buttons touching edges */
