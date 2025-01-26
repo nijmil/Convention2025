@@ -3,66 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Timetable</title>
+    <title>Event Timetable</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 <body>
 
-    <header>
-        <img src="images/Convention_Logo.png" alt="2025 ACA National Clogging Convention">
-    </header>
+<header>
+    <h1>Event Timetable</h1>
+</header>
 
 <main>
-    <h2>Click on events to add to your personal planner</h2>
-    <div class="event-container">
-        <div class="event">
-            <h3>10:00 AM - AGM</h3>
-            <button class="add-event-btn" data-time="10:00 AM" data-event="AGM">Add to Planner</button>
-        </div>
-        <div class="event">
-            <h3>11:00 AM - Workshop 1</h3>
-            <button class="add-event-btn" data-time="11:00 AM" data-event="Workshop 1">Add to Planner</button>
-        </div>
-        <!-- Add more events as needed -->
+    <div id="date-buttons">
+        <button class="date-btn" data-date="Thurs 11 Sept">Thurs 11 Sept</button>
+        <button class="date-btn" data-date="Fri 12 Sept">Fri 12 Sept</button>
+        <button class="date-btn" data-date="Sat 13 Sept">Sat 13 Sept</button>
+        <button class="date-btn" data-date="Sun 14 Sept">Sun 14 Sept</button>
+    </div>
+
+    <div id="event-table">
+        <table>
+            <thead>
+                <tr>
+                    <th>Time</th>
+                    <th>Event</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="event-list"></tbody>
+        </table>
     </div>
 </main>
 
 <script>
-    // Get all event buttons
-    const eventButtons = document.querySelectorAll('.add-event-btn');
+    const eventList = document.getElementById('event-list');
+    const dateButtons = document.querySelectorAll('.date-btn');
+    
+    // Event data structure
+    const events = {
+        "Thurs 11 Sept": [
+            { time: "10:00 AM", event: "AGM" },
+            { time: "11:00 AM", event: "Workshop 1" },
+            { time: "1:00 PM", event: "Lunch Break" }
+        ],
+        "Fri 12 Sept": [
+            { time: "9:00 AM", event: "Keynote Speaker" },
+            { time: "11:00 AM", event: "Workshop 2" },
+            { time: "2:00 PM", event: "Panel Discussion" }
+        ],
+        "Sat 13 Sept": [
+            { time: "10:00 AM", event: "Workshop 3" },
+            { time: "12:00 PM", event: "Lunch Break" },
+            { time: "1:30 PM", event: "Closing Remarks" }
+        ],
+        "Sun 14 Sept": [
+            { time: "9:00 AM", event: "Final Workshop" },
+            { time: "11:00 AM", event: "Award Ceremony" }
+        ]
+    };
 
-    // Add event listener to each button
-    eventButtons.forEach(button => {
+    // Function to display events based on the selected date
+    function displayEvents(date) {
+        // Clear existing events
+        eventList.innerHTML = "";
+
+        // Retrieve the events for the selected date
+        const selectedEvents = events[date] || [];
+
+        selectedEvents.forEach(event => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${event.time}</td>
+                <td>${event.event}</td>
+                <td><button class="add-event-btn" data-time="${event.time}" data-event="${event.event}">Add to Planner</button></td>
+            `;
+            eventList.appendChild(row);
+        });
+    }
+
+    // Event listener for date buttons
+    dateButtons.forEach(button => {
         button.addEventListener('click', function() {
-            const eventTime = this.getAttribute('data-time');
-            const eventName = this.getAttribute('data-event');
+            const selectedDate = this.getAttribute('data-date');
+            displayEvents(selectedDate);
+        });
+    });
+
+    // Event listener for 'Add to Planner' buttons
+    eventList.addEventListener('click', function(event) {
+        if (event.target && event.target.classList.contains('add-event-btn')) {
+            const eventTime = event.target.getAttribute('data-time');
+            const eventName = event.target.getAttribute('data-event');
             
-            // Create an object with event details
+            // Create an object with the event details
             const eventDetails = {
                 time: eventTime,
                 name: eventName
             };
 
-            // Retrieve existing events from localStorage, or initialize empty array
+            // Retrieve the current planner or initialize it
             let planner = JSON.parse(localStorage.getItem('personalPlanner')) || [];
 
             // Add the new event to the planner
             planner.push(eventDetails);
 
-            // Save the updated planner back to localStorage
+            // Save the updated planner to localStorage
             localStorage.setItem('personalPlanner', JSON.stringify(planner));
 
             alert(`${eventName} at ${eventTime} added to your planner!`);
-        });
+        }
     });
 </script>
-<nav class="bottom-nav">
-    <ul>
-        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
-        <li><a href="workshops.html"><i class="fas fa-calendar-day"></i> My Planner</a></li>
-        <li><a href="more.html"><i class="fas fa-info-circle"></i> More</a></li>
-    </ul>
-</nav>
+
 </body>
 </html>
