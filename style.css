@@ -13,6 +13,7 @@ body {
     line-height: 1.6;
     padding: 20px;
     padding-bottom: 60px; /* Add space for the fixed navigation */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
 /* Header styling */
@@ -43,17 +44,18 @@ h2 {
 /* Button container styling for menu-like buttons */
 .button-container {
     display: flex; /* Use flexbox for horizontal alignment */
-    justify-content: space-evenly; /* Evenly space the buttons horizontally */
+    justify-content: space-between; /* Space the buttons equally */
     margin-top: 20px; /* Add spacing below the logo */
     gap: 10px; /* Space between buttons */
     width: 100%; /* Ensure container takes full width */
     margin: 0 auto; /* Center the container */
     box-sizing: border-box; /* Include padding in width calculations */
+    overflow-x: hidden; /* Prevent horizontal overflow */
 }
 
 /* Styling for each button */
 .button-item {
-    flex-grow: 1; /* Buttons will grow to take equal space */
+    flex: 1 1 30%; /* Each button takes up 30% of the container width */
     text-align: center;
 }
 
@@ -187,6 +189,7 @@ button:hover {
         font-size: 16px;
     }
 }
+
 
 
 
