@@ -49,31 +49,10 @@
         <ul>
             <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
             <li><a href="workshops.html"><i class="fas fa-calendar-day"></i> Workshops</a></li>
-            <li class="dropdown">
-                <a class="dropdown-toggle"><i class="fas fa-info-circle"></i> More</a>
-                <ul class="dropdown-menu">
-                    <li><a href="things-to-do.html">Things To Do</a></li>
-                    <li><a href="food-options.html">Food Options</a></li>
-                    <li><a href="instructors.html">Instructors</a></li>
-                    <li><a href="social-program.html">Social Program</a></li>
-                    <li><a href="other-info.html">Other Info</a></li>
-                </ul>
-            </li>
+            <li><a href="more.html"><i class="fas fa-info-circle"></i> More</a></li>
         </ul>
     </nav>
-
-    <script>
-        document.querySelector('.dropdown-toggle').addEventListener('click', () => {
-            const menu = document.querySelector('.dropdown-menu');
-            menu.classList.toggle('show');
-        });
-
-        window.addEventListener('click', (event) => {
-            if (!event.target.closest('.dropdown')) {
-                document.querySelector('.dropdown-menu').classList.remove('show');
-            }
-        });
-    </script>
 </body>
 </html>
+
 

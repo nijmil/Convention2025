@@ -101,7 +101,7 @@ button:hover {
 }
 
 .bottom-nav ul li {
-    position: relative;
+    margin: 0;
 }
 
 .bottom-nav ul li a {
@@ -110,28 +110,3 @@ button:hover {
     font-size: 16px;
 }
 
-.dropdown-menu {
-    display: none;
-    position: absolute;
-    background: white;
-    list-style: none;
-    padding: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    top: 30px;
-    left: 0;
-    width: max-content;
-    z-index: 10;
-}
-
-.dropdown-menu li {
-    margin: 5px 0;
-}
-
-.dropdown-menu li a {
-    color: black;
-    text-decoration: none;
-}
-
-.dropdown-menu.show {
-    display: block;
-}
