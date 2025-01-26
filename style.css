@@ -190,58 +190,41 @@ button:hover {
     }
 }
 
-/* Styling specific to the 'More' page buttons */
+/* Scoped Styling for More Page Buttons */
 .more-button-container {
-    display: grid; /* Use CSS Grid for layout */
-    grid-template-columns: repeat(2, 1fr); /* Always create 2 equal-width columns */
-    gap: 20px; /* Add space between buttons */
+    display: grid; /* Use grid layout */
+    grid-template-columns: repeat(2, 1fr); /* Always maintain 2 x 2 layout */
+    gap: 15px; /* Space between buttons */
     margin-top: 20px;
-    justify-items: center; /* Center buttons horizontally in grid cells */
     padding: 0 10px;
 }
 
-.more-button-item {
-    width: 100%; /* Ensure items take full width of grid cells */
-    max-width: 200px; /* Prevent buttons from growing too wide */
-    box-sizing: border-box; /* Include padding and border in width */
-}
-
 .more-button-container button {
-    background-color: black; /* Black background */
-    color: #cbb643; /* Gold text */
-    border: 2px solid #cbb643; /* Gold border */
-    font-size: 16px; /* Font size for readability */
+    background-color: black;
+    color: #cbb643;
+    border: 2px solid #cbb643;
+    font-size: 16px;
     cursor: pointer;
     border-radius: 8px;
-    width: 100%; /* Button spans its container */
-    height: 100px; /* Uniform height */
-    display: flex; /* Flexbox for centering */
-    align-items: center; /* Center text vertically */
-    justify-content: center; /* Center text horizontally */
-    box-sizing: border-box; /* Include padding and border in width */
-    text-align: center; /* Ensure text is centered */
-    word-wrap: break-word; /* Prevent long words from overflowing */
-    padding: 10px; /* Padding inside the button */
+    padding: 12px 20px;
     transition: background-color 0.3s ease, color 0.3s ease;
+    width: 100%;
+    height: 80px; /* Fixed button height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
 }
 
 .more-button-container button i {
-    margin-right: 8px; /* Add space between icon and text */
+    margin-right: 8px;
 }
 
 .more-button-container button:hover {
-    background-color: #cbb643; /* Gold background on hover */
-    color: black; /* Black text on hover */
-    border-color: #cbb643; /* Maintain gold border */
+    background-color: #cbb643;
+    color: black;
+    border-color: #cbb643;
 }
-
-/* Ensure 2x2 layout always remains */
-@media (max-width: 600px) {
-    .more-button-container {
-        grid-template-columns: repeat(2, 1fr); /* Enforce 2 columns */
-    }
-}
-
 
 
 /* Convention Info Section */
