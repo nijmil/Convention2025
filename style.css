@@ -110,7 +110,7 @@ button:hover {
     text-align: center;
     padding: 15px;
     border-radius: 8px;
-    font-size: 18px;
+    font-size: 25px;
     text-decoration: none;
     transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
     border: 2px solid #cbb643; /* Same border as venue buttons */
