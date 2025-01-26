@@ -32,7 +32,7 @@
     <!-- Content for Thursday (default) -->
     <div id="thursday-content" class="day-content">
         <h2>Thursday 11 Sept</h2>
-        <table>
+        <table id="thursday-table">
             <!-- Event rows will be dynamically added -->
         </table>
     </div>
@@ -40,7 +40,7 @@
     <!-- Content for Friday -->
     <div id="friday-content" class="day-content" style="display: none;">
         <h2>Friday 12 Sept</h2>
-        <table>
+        <table id="friday-table">
             <!-- Event rows will be dynamically added -->
         </table>
     </div>
@@ -48,7 +48,7 @@
     <!-- Content for Saturday -->
     <div id="saturday-content" class="day-content" style="display: none;">
         <h2>Saturday 13 Sept</h2>
-        <table>
+        <table id="saturday-table">
             <!-- Event rows will be dynamically added -->
         </table>
     </div>
@@ -56,7 +56,7 @@
     <!-- Content for Sunday -->
     <div id="sunday-content" class="day-content" style="display: none;">
         <h2>Sunday 14 Sept</h2>
-        <table>
+        <table id="sunday-table">
             <!-- Event rows will be dynamically added -->
         </table>
     </div>
@@ -119,27 +119,27 @@
     // Retrieve and display the events for a specific day
     function displayEvents(day) {
         // Clear previous table content
-        const allTables = document.querySelectorAll('table');
-        allTables.forEach(table => table.innerHTML = '');
-
+        const table = document.querySelector(`#${day.toLowerCase().replace(' ', '-')}-table`);
+        table.innerHTML = '';  // Clear the table
+        
         const planner = JSON.parse(localStorage.getItem('personalPlanner')) || [];
         const eventsForDay = planner.filter(event => event.day === day);
 
-        const table = document.querySelector(`#${day.toLowerCase().replace(' ', '-')}-content table`);
+        // Check if events exist
+        console.log('Events for', day, eventsForDay);
 
-        eventsForDay.forEach(event => {
-            const row = document.createElement('tr');
-            const timeCell = document.createElement('td');
-            const eventCell = document.createElement('td');
-            timeCell.textContent = event.time;
-            eventCell.textContent = event.name;
-            row.appendChild(timeCell);
-            row.appendChild(eventCell);
-            table.appendChild(row);
-        });
-
-        // If no events are found, display a message
-        if (eventsForDay.length === 0) {
+        if (eventsForDay.length > 0) {
+            eventsForDay.forEach(event => {
+                const row = document.createElement('tr');
+                const timeCell = document.createElement('td');
+                const eventCell = document.createElement('td');
+                timeCell.textContent = event.time;
+                eventCell.textContent = event.name;
+                row.appendChild(timeCell);
+                row.appendChild(eventCell);
+                table.appendChild(row);
+            });
+        } else {
             const row = document.createElement('tr');
             const cell = document.createElement('td');
             cell.colSpan = 2;
@@ -158,10 +158,17 @@
                 time: this.getAttribute('data-time'),
                 name: this.getAttribute('data-event')
             };
+
             let planner = JSON.parse(localStorage.getItem('personalPlanner')) || [];
             planner.push(event);
             localStorage.setItem('personalPlanner', JSON.stringify(planner));
+
+            // Debugging: Log event to confirm it's added
+            console.log('Event added:', event);
             alert(`${event.name} has been added to your personal planner.`);
+
+            // Update the table after adding an event
+            displayEvents(event.day);
         });
     });
 </script>
