@@ -3,26 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Personal Planner</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-        .button-container {
-            display: flex;
-            justify-content: center;
-            margin: 20px 0;
-        }
-        .button-item {
-            margin: 0 10px;
-        }
-        .event-list {
-            margin-top: 20px;
-        }
-        .event {
-            margin-bottom: 10px;
-        }
-    </style>
+    <title>Personal Planner</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -31,98 +13,30 @@
 </header>
 
 <main>
-    <!-- Button container for date selection -->
-    <div class="button-container">
-        <div class="button-item">
-            <button id="thursday-btn">Thurs 11 Sept</button>
-        </div>
-        <div class="button-item">
-            <button id="friday-btn">Fri 12 Sept</button>
-        </div>
-        <div class="button-item">
-            <button id="saturday-btn">Sat 13 Sept</button>
-        </div>
-        <div class="button-item">
-            <button id="sunday-btn">Sun 14 Sept</button>
-        </div>
-    </div>
-
-    <!-- Event list for selected day -->
-    <div class="event-list" id="event-list">
-        <!-- Events will be dynamically added here -->
+    <div id="planner-content">
+        <h2>Your Selected Workshops</h2>
+        <ul id="planner-list"></ul>
     </div>
 </main>
 
 <script>
-    // Get buttons
-    const thursdayBtn = document.getElementById('thursday-btn');
-    const fridayBtn = document.getElementById('friday-btn');
-    const saturdayBtn = document.getElementById('saturday-btn');
-    const sundayBtn = document.getElementById('sunday-btn');
-    const eventList = document.getElementById('event-list');
+    // Retrieve the personal planner from localStorage
+    const plannerList = document.getElementById('planner-list');
+    const planner = JSON.parse(localStorage.getItem('personalPlanner')) || [];
 
-    // Add event listeners to buttons
-    thursdayBtn.addEventListener('click', () => {
-        displayEvents('Thursday 11 Sept');
-    });
-
-    fridayBtn.addEventListener('click', () => {
-        displayEvents('Friday 12 Sept');
-    });
-
-    saturdayBtn.addEventListener('click', () => {
-        displayEvents('Saturday 13 Sept');
-    });
-
-    sundayBtn.addEventListener('click', () => {
-        displayEvents('Sunday 14 Sept');
-    });
-
-    // Display events for the selected day
-    function displayEvents(day) {
-        // Clear the event list first
-        eventList.innerHTML = '';
-
-        // Get stored events from localStorage
-        const planner = JSON.parse(localStorage.getItem('personalPlanner')) || [];
-        const eventsForDay = planner.filter(event => event.day === day);
-
-        // Check if there are events for the selected day
-        if (eventsForDay.length > 0) {
-            eventsForDay.forEach(event => {
-                const eventDiv = document.createElement('div');
-                eventDiv.classList.add('event');
-                eventDiv.textContent = `${event.time}: ${event.name}`;
-                eventList.appendChild(eventDiv);
-            });
-        } else {
-            const noEventsDiv = document.createElement('div');
-            noEventsDiv.textContent = 'No events for this day.';
-            eventList.appendChild(noEventsDiv);
-        }
+    // If there are events in the planner, display them
+    if (planner.length > 0) {
+        planner.forEach(event => {
+            const listItem = document.createElement('li');
+            listItem.textContent = event;
+            plannerList.appendChild(listItem);
+        });
+    } else {
+        plannerList.innerHTML = '<li>No events selected yet.</li>';
     }
-
-    // Save events to personal planner in localStorage
-    // Example event addition for testing purposes
-    // This will be added when the user clicks on "Add to Planner"
-    const addExampleEvent = () => {
-        const event = {
-            day: 'Thursday 11 Sept',
-            time: '10:00 AM',
-            name: 'AGM'
-        };
-
-        let planner = JSON.parse(localStorage.getItem('personalPlanner')) || [];
-        planner.push(event);
-        localStorage.setItem('personalPlanner', JSON.stringify(planner));
-    };
-
-    // Uncomment to add an example event for testing
-    // addExampleEvent();
 </script>
 
 </body>
 </html>
-
 
 
