@@ -43,17 +43,20 @@ h2 {
 /* Button container styling for menu-like buttons */
 .button-container {
     display: flex; /* Use flexbox for horizontal alignment */
-    justify-content: space-between; /* Distribute space between buttons */
+    justify-content: space-evenly; /* Evenly space the buttons */
     margin-top: 20px; /* Add spacing below the logo */
     gap: 10px; /* Space between buttons */
     max-width: 100%; /* Ensure container takes full width */
     margin: 0 auto; /* Center the container */
+    flex-wrap: wrap; /* Allow buttons to wrap to next line if needed */
 }
 
 /* Styling for each button */
 .button-item {
     flex: 1; /* Ensure buttons are evenly spaced */
     text-align: center;
+    min-width: 180px; /* Set minimum width for each button */
+    max-width: 300px; /* Set a max-width for buttons */
 }
 
 /* Basic styling for buttons */
@@ -67,14 +70,15 @@ button {
     padding: 12px 20px; /* Adjust padding for better size */
     transition: background-color 0.3s ease, color 0.3s ease;
     width: 100%; /* Make button fill its container */
-    max-width: 250px; /* Set max width to avoid buttons getting too wide */
     height: 50px; /* Ensure buttons have a consistent height */
     display: flex; /* Use flexbox for text centering */
     align-items: center; /* Vertically center text */
     justify-content: center; /* Horizontally center text */
     white-space: normal; /* Allow wrapping of text */
+    word-wrap: break-word; /* Prevent overflow of long text */
 }
 
+/* Button hover effect */
 button:hover {
     background-color: #cbb643; /* Gold background on hover */
     color: black; /* Black font on hover */
@@ -184,6 +188,7 @@ button:hover {
         font-size: 16px;
     }
 }
+
 
 
 
