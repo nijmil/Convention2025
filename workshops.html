@@ -4,7 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Personal Planner</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .button-item {
+            margin: 0 10px;
+        }
+        .event-list {
+            margin-top: 20px;
+        }
+        .event {
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
 
@@ -29,161 +47,82 @@
         </div>
     </div>
 
-    <!-- Content for Thursday (default) -->
-    <div id="thursday-content" class="day-content">
-        <h2>Thursday 11 Sept</h2>
-        <table id="thursday-table">
-            <!-- Event rows will be dynamically added -->
-        </table>
-    </div>
-
-    <!-- Content for Friday -->
-    <div id="friday-content" class="day-content" style="display: none;">
-        <h2>Friday 12 Sept</h2>
-        <table id="friday-table">
-            <!-- Event rows will be dynamically added -->
-        </table>
-    </div>
-
-    <!-- Content for Saturday -->
-    <div id="saturday-content" class="day-content" style="display: none;">
-        <h2>Saturday 13 Sept</h2>
-        <table id="saturday-table">
-            <!-- Event rows will be dynamically added -->
-        </table>
-    </div>
-
-    <!-- Content for Sunday -->
-    <div id="sunday-content" class="day-content" style="display: none;">
-        <h2>Sunday 14 Sept</h2>
-        <table id="sunday-table">
-            <!-- Event rows will be dynamically added -->
-        </table>
+    <!-- Event list for selected day -->
+    <div class="event-list" id="event-list">
+        <!-- Events will be dynamically added here -->
     </div>
 </main>
 
 <script>
-    // Get all buttons and content divs
+    // Get buttons
     const thursdayBtn = document.getElementById('thursday-btn');
     const fridayBtn = document.getElementById('friday-btn');
     const saturdayBtn = document.getElementById('saturday-btn');
     const sundayBtn = document.getElementById('sunday-btn');
-
-    const thursdayContent = document.getElementById('thursday-content');
-    const fridayContent = document.getElementById('friday-content');
-    const saturdayContent = document.getElementById('saturday-content');
-    const sundayContent = document.getElementById('sunday-content');
+    const eventList = document.getElementById('event-list');
 
     // Add event listeners to buttons
     thursdayBtn.addEventListener('click', () => {
-        thursdayContent.style.display = 'block';
-        fridayContent.style.display = 'none';
-        saturdayContent.style.display = 'none';
-        sundayContent.style.display = 'none';
         displayEvents('Thursday 11 Sept');
     });
 
     fridayBtn.addEventListener('click', () => {
-        thursdayContent.style.display = 'none';
-        fridayContent.style.display = 'block';
-        saturdayContent.style.display = 'none';
-        sundayContent.style.display = 'none';
         displayEvents('Friday 12 Sept');
     });
 
     saturdayBtn.addEventListener('click', () => {
-        thursdayContent.style.display = 'none';
-        fridayContent.style.display = 'none';
-        saturdayContent.style.display = 'block';
-        sundayContent.style.display = 'none';
         displayEvents('Saturday 13 Sept');
     });
 
     sundayBtn.addEventListener('click', () => {
-        thursdayContent.style.display = 'none';
-        fridayContent.style.display = 'none';
-        saturdayContent.style.display = 'none';
-        sundayContent.style.display = 'block';
         displayEvents('Sunday 14 Sept');
     });
 
-    // Set Thursday as default display on page load
-    document.addEventListener('DOMContentLoaded', () => {
-        thursdayContent.style.display = 'block';
-        fridayContent.style.display = 'none';
-        saturdayContent.style.display = 'none';
-        sundayContent.style.display = 'none';
-        displayEvents('Thursday 11 Sept');
-    });
-
-    // Retrieve and display the events for a specific day
+    // Display events for the selected day
     function displayEvents(day) {
-        // Convert day string to lowercase and replace spaces with hyphens for matching table ID
-        const tableId = day.toLowerCase().replace(' ', '-') + '-table';
-        const table = document.getElementById(tableId);
-        
-        // Ensure the table exists before trying to modify it
-        if (!table) {
-            console.error('Table not found for:', day);
-            return;
-        }
-        
-        // Clear previous table content
-        table.innerHTML = '';
+        // Clear the event list first
+        eventList.innerHTML = '';
 
         // Get stored events from localStorage
         const planner = JSON.parse(localStorage.getItem('personalPlanner')) || [];
         const eventsForDay = planner.filter(event => event.day === day);
 
-        // Check if events exist
-        console.log('Events for', day, eventsForDay);
-
+        // Check if there are events for the selected day
         if (eventsForDay.length > 0) {
             eventsForDay.forEach(event => {
-                const row = document.createElement('tr');
-                const timeCell = document.createElement('td');
-                const eventCell = document.createElement('td');
-                timeCell.textContent = event.time;
-                eventCell.textContent = event.name;
-                row.appendChild(timeCell);
-                row.appendChild(eventCell);
-                table.appendChild(row);
+                const eventDiv = document.createElement('div');
+                eventDiv.classList.add('event');
+                eventDiv.textContent = `${event.time}: ${event.name}`;
+                eventList.appendChild(eventDiv);
             });
         } else {
-            const row = document.createElement('tr');
-            const cell = document.createElement('td');
-            cell.colSpan = 2;
-            cell.textContent = 'No events added yet.';
-            row.appendChild(cell);
-            table.appendChild(row);
+            const noEventsDiv = document.createElement('div');
+            noEventsDiv.textContent = 'No events for this day.';
+            eventList.appendChild(noEventsDiv);
         }
     }
 
     // Save events to personal planner in localStorage
-    const addToPlanner = document.querySelectorAll('.add-to-planner');
-    addToPlanner.forEach(item => {
-        item.addEventListener('click', function() {
-            const event = {
-                day: this.getAttribute('data-day'),
-                time: this.getAttribute('data-time'),
-                name: this.getAttribute('data-event')
-            };
+    // Example event addition for testing purposes
+    // This will be added when the user clicks on "Add to Planner"
+    const addExampleEvent = () => {
+        const event = {
+            day: 'Thursday 11 Sept',
+            time: '10:00 AM',
+            name: 'AGM'
+        };
 
-            let planner = JSON.parse(localStorage.getItem('personalPlanner')) || [];
-            planner.push(event);
-            localStorage.setItem('personalPlanner', JSON.stringify(planner));
+        let planner = JSON.parse(localStorage.getItem('personalPlanner')) || [];
+        planner.push(event);
+        localStorage.setItem('personalPlanner', JSON.stringify(planner));
+    };
 
-            // Debugging: Log event to confirm it's added
-            console.log('Event added:', event);
-            alert(`${event.name} has been added to your personal planner.`);
-
-            // Update the table after adding an event
-            displayEvents(event.day);
-        });
-    });
+    // Uncomment to add an example event for testing
+    // addExampleEvent();
 </script>
 
 </body>
 </html>
+
 
 
