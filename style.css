@@ -221,11 +221,6 @@ button:hover {
     max-width: 200px; /* Optional: constrain button width to prevent excessive stretching */
 }
 
-/* Ensure buttons always maintain same height and width */
-.more-button-container button {
-    aspect-ratio: 1; /* Ensure square buttons */
-}
-
 /* Hover effect for the 'More' buttons */
 .more-button-container button:hover {
     background-color: #cbb643; /* Gold background on hover */
@@ -241,16 +236,17 @@ button:hover {
 /* Ensure 2x2 layout on all screen sizes */
 @media (max-width: 600px) {
     .more-button-container {
-        grid-template-columns: repeat(2, 1fr); /* Maintain 2 columns on mobile */
+        gap: 10px; /* Maintain space between buttons */
+        justify-content: center; /* Center the buttons */
+        width: 100%; /* Ensure container takes up full width */
     }
-
     .more-button-container button {
-        width: 100%; /* Ensure buttons fill their grid cells */
-        height: 50px; /* Adjust height for smaller screens */
-        font-size: 14px; /* Adjust font size for mobile devices */
+        width: 100%; /* Ensure button takes full width of container */
+        max-width: 250px; /* Keep the max width for mobile */
+        height: 50px; /* Maintain consistent height */
+        font-size: 16px; /* Adjust font size for better fit */
     }
 }
-
 
 
 /* Convention Information Section */
