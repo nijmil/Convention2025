@@ -43,10 +43,15 @@ main {
     border-radius: 8px;
     font-size: 18px;
     padding: 12px;
-    width: 30%; /* Ensure all buttons are the same width */
+    width: 30%; /* Consistent width */
+    min-width: 100px; /* Set a minimum width */
+    max-width: 300px; /* Set a maximum width */
+    flex-grow: 0; /* Prevent stretching */
+    flex-shrink: 0; /* Prevent shrinking */
     cursor: pointer;
     transition: 0.3s;
     text-align: center;
+    white-space: nowrap; /* Prevent button text from wrapping */
 }
 
 button:hover {
