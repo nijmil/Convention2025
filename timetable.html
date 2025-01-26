@@ -36,6 +36,7 @@
             <tr>
                 <td>7:30 - 10:00 PM</td>
                 <td>Trail In Dance "Step Back In Time"</td>
+                <td><button class="add-to-planner" data-time="7:30 - 10:00 PM" data-event="Trail In Dance 'Step Back In Time'">Add to Planner</button></td>
             </tr>
         </table>
     </div>
@@ -47,27 +48,32 @@
             <tr>
                 <td>11:00 - 12:00 PM</td>
                 <td>Leaders Meeting</td>
+                <td><button class="add-to-planner" data-time="11:00 - 12:00 PM" data-event="Leaders Meeting">Add to Planner</button></td>
             </tr>
             <tr>
                 <td>12:00 - 12:30 PM</td>
                 <td>Lunch</td>
+                <td><button class="add-to-planner" data-time="12:00 - 12:30 PM" data-event="Lunch">Add to Planner</button></td>
             </tr>
             <tr>
                 <td>12:30 - 1:30 PM</td>
                 <td>AGM</td>
+                <td><button class="add-to-planner" data-time="12:30 - 1:30 PM" data-event="AGM">Add to Planner</button></td>
             </tr>
             <tr>
                 <td>3:00 - 5:00 PM</td>
                 <td>Choreo Challenge</td>
+                <td><button class="add-to-planner" data-time="3:00 - 5:00 PM" data-event="Choreo Challenge">Add to Planner</button></td>
             </tr>
             <tr>
                 <td>6:00 PM</td>
                 <td>Social</td>
+                <td><button class="add-to-planner" data-time="6:00 PM" data-event="Social">Add to Planner</button></td>
             </tr>
         </table>
     </div>
 
-    <!-- Content for Saturday (to be added later) -->
+    <!-- Content for Saturday -->
     <div id="saturday-content" class="day-content" style="display: none;">
         <h2>Saturday 13 Sept</h2>
         <!-- Details will be added later -->
@@ -119,6 +125,24 @@
         fridayContent.style.display = 'none';
         saturdayContent.style.display = 'none';
         sundayContent.style.display = 'block';
+    });
+
+    // Function to add event to personal planner (localStorage)
+    function addToPlanner(time, event) {
+        const eventDetails = { time, event };
+        let planner = JSON.parse(localStorage.getItem('personalPlanner')) || [];
+        planner.push(eventDetails);
+        localStorage.setItem('personalPlanner', JSON.stringify(planner));
+        alert(`${event} at ${time} added to your planner!`);
+    }
+
+    // Event listener for "Add to Planner" buttons
+    document.addEventListener('click', function(e) {
+        if (e.target && e.target.classList.contains('add-to-planner')) {
+            const eventTime = e.target.getAttribute('data-time');
+            const eventName = e.target.getAttribute('data-event');
+            addToPlanner(eventTime, eventName);
+        }
     });
 
     // Set Thursday as default display on page load
