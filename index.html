@@ -3,118 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>2025 ACA National Clogging Convention</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="manifest" href="manifest.json">
-
-    <!-- Link to Font Awesome for icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 <body>
     <header>
         <img src="images/Convention_Logo.png" alt="2025 ACA National Clogging Convention">
     </header>
-    
+
     <main>
-        <!-- Content of the page goes here -->
         <div class="button-container">
-            <!-- Each section below represents a button in the grid -->
             <section class="button-item">
                 <button onclick="window.location.href='venue.html'">Venue</button>
             </section>
-            
             <section class="button-item">
                 <button onclick="window.location.href='accommodation.html'">Hotels</button>
             </section>
-            
             <section class="button-item">
                 <button onclick="window.location.href='workshops.html'">Weekend Program</button>
             </section>
         </div>
 
-        <!-- Registration Container Section -->
         <section id="registration-container">
             <div class="registration-content">
                 <img src="images/Register_Now.png" alt="Register Now" class="register-image">
-                <br>
                 <p>
                     Prepare for an unforgettable weekend filled with dance, laughter, and community! This year, we’re excited to welcome 
-                    the talented mother-son duo, Angelika and Oliver Kromer from Germany, as our guest instructors, alongside your favorite 
-                    Australian talents. Whether you're a beginner or a seasoned pro, there’s something for everyone—immersive workshops, 
-                    high-energy social events, and more! Don’t miss out on the fun—register today and secure your place on the dance floor! 
+                    Angelika and Oliver Kromer from Germany as guest instructors. Whether you're a beginner or a seasoned pro, there’s 
+                    something for everyone—immersive workshops, high-energy social events, and more! Don’t miss out—register today!
                 </p>
                 <div class="registration-buttons">
-                    <a href="https://www.cloggingaustralia.com/natconv/2025/registration.pdf?v=02Oct2024" class="register-button" target="_blank">
+                    <a href="https://www.cloggingaustralia.com/natconv/2025/registration.pdf" class="register-button" target="_blank">
                         Dancer Registration
                     </a>
-                    <a href="https://www.cloggingaustralia.com/natconv/2025/cuerInstructor.pdf?v=2024-10-02" class="register-button" target="_blank">
+                    <a href="https://www.cloggingaustralia.com/natconv/2025/cuerInstructor.pdf" class="register-button" target="_blank">
                         Cuer/Instructor Registration
                     </a>
                 </div>
             </div>
         </section>
     </main>
-    
-    <!-- Navigation Menu at the Bottom -->
+
     <nav class="bottom-nav">
         <ul>
             <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
             <li><a href="workshops.html"><i class="fas fa-calendar-day"></i> Workshops</a></li>
             <li class="dropdown">
-                <button onclick="toggleDropdown()"><i class="fas fa-info-circle"></i> More</button>
-                <div class="dropdown-content">
-                    <a href="things-to-do.html">Things To Do</a>
-                    <a href="food-options.html">Food Options</a>
-                    <a href="instructors.html">Instructors</a>
-                    <a href="social-program.html">Social Program</a>
-                    <a href="other-info.html">Other Info</a>
-                </div>
+                <a class="dropdown-toggle"><i class="fas fa-info-circle"></i> More</a>
+                <ul class="dropdown-menu">
+                    <li><a href="things-to-do.html">Things To Do</a></li>
+                    <li><a href="food-options.html">Food Options</a></li>
+                    <li><a href="instructors.html">Instructors</a></li>
+                    <li><a href="social-program.html">Social Program</a></li>
+                    <li><a href="other-info.html">Other Info</a></li>
+                </ul>
             </li>
         </ul>
     </nav>
 
-    <!-- Add to Home Screen Banner -->
-    <div id="install-banner" style="display: none;">
-        <p>Install the app for easy access! <button id="install-btn">Add to Home Screen</button></p>
-    </div>
-
-    <!-- Countdown JavaScript -->
     <script>
-        function updateCountdown() {
-            const eventDate = new Date("2025-09-11T00:00:00");
-            const currentDate = new Date();
-            const diffTime = eventDate - currentDate;
+        document.querySelector('.dropdown-toggle').addEventListener('click', () => {
+            const menu = document.querySelector('.dropdown-menu');
+            menu.classList.toggle('show');
+        });
 
-            if (diffTime > 0) {
-                const daysRemaining = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-                document.getElementById("countdown").textContent = `${daysRemaining} Days Until Convention`;
-            } else {
-                document.getElementById("countdown").textContent = "The Convention Has Begun!";
-            }
-        }
-
-        // Run the countdown update
-        updateCountdown();
-        setInterval(updateCountdown, 1000 * 60 * 60); // Update every hour
-    </script>
-
-    <!-- Dropdown Functionality -->
-    <script>
-        function toggleDropdown() {
-            const dropdown = document.querySelector('.dropdown .dropdown-content');
-            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
-        }
-
-        // Close the dropdown if clicked outside
-        window.onclick = function (event) {
-            const dropdown = document.querySelector('.dropdown .dropdown-content');
+        window.addEventListener('click', (event) => {
             if (!event.target.closest('.dropdown')) {
-                dropdown.style.display = 'none';
+                document.querySelector('.dropdown-menu').classList.remove('show');
             }
-        };
+        });
     </script>
-    <script src="script.js"></script>
 </body>
 </html>
 
