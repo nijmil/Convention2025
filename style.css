@@ -245,6 +245,51 @@ button:hover {
     }
 }
 
+/* Convention Info Section */
+#convention_info-container {
+    margin: 20px 0;
+    padding: 20px;
+    background-color: #fff; /* White background for clarity */
+    border: 1px solid #ccc; /* Optional border */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
 
+#convention_info-container .convention-content {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #333; /* Dark text color */
+}
+
+#convention_info-container p {
+    margin: 0;
+}
+
+#convention_info-container .convention-title {
+    font-weight: bold; /* Make titles bold */
+    font-size: 18px; /* Slightly larger font for emphasis */
+    color: #000; /* Black for contrast */
+    display: block; /* Ensure titles start on a new line */
+    margin-bottom: 10px; /* Add space after the title */
+}
+
+#convention_info-container p span {
+    margin-top: 10px; /* Space between sections */
+}
+
+/* Optional responsive adjustments */
+@media (max-width: 600px) {
+    #convention_info-container {
+        padding: 15px;
+    }
+
+    #convention_info-container .convention-title {
+        font-size: 16px; /* Adjust font size for smaller screens */
+    }
+
+    #convention_info-container .convention-content {
+        font-size: 14px; /* Slightly smaller text for readability */
+    }
+}
 
 
