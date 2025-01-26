@@ -192,36 +192,36 @@ button:hover {
 
 /* Styling specific to the 'More' page buttons */
 .more-button-container {
-    display: flex;
-    flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
-    justify-content: space-around; /* Distribute buttons evenly */
-    gap: 15px; /* Space between buttons */
+    display: grid; /* Use CSS Grid for layout */
+    grid-template-columns: repeat(2, 1fr); /* Create 2 equal-width columns */
+    gap: 20px; /* Add space between buttons */
     margin-top: 20px;
-    padding: 0 10px; /* Add padding to prevent overflow */
+    justify-items: center; /* Center buttons horizontally in their grid cells */
+    padding: 0 10px;
 }
 
 .more-button-item {
-    flex: 1 1 200px; /* Ensure buttons take equal space and adjust to smaller screens */
-    text-align: center;
-    max-width: 250px; /* Prevent buttons from growing too wide */
-    min-width: 150px; /* Ensure buttons don’t shrink too small */
+    width: 100%; /* Ensure items take full width of grid cells */
+    max-width: 200px; /* Prevent buttons from growing too wide */
 }
 
 .more-button-container button {
     background-color: black; /* Black background */
     color: #cbb643; /* Gold text */
     border: 2px solid #cbb643; /* Gold border */
-    font-size: 16px; /* Adjust font size for readability */
+    font-size: 16px; /* Font size for readability */
     cursor: pointer;
     border-radius: 8px;
-    padding: 12px 20px; /* Padding inside the button */
-    transition: background-color 0.3s ease, color 0.3s ease;
-    width: 100%; /* Ensure button spans its container */
-    height: 60px; /* Uniform height for all buttons */
+    width: 100%; /* Button spans its container */
+    height: 100px; /* Uniform height */
     display: flex; /* Flexbox for centering */
-    align-items: center; /* Vertical alignment */
-    justify-content: center; /* Horizontal alignment */
+    align-items: center; /* Center text vertically */
+    justify-content: center; /* Center text horizontally */
     box-sizing: border-box; /* Include padding and border in width */
+    text-align: center; /* Ensure text is centered */
+    word-wrap: break-word; /* Prevent long words from overflowing */
+    padding: 10px; /* Padding inside the button */
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .more-button-container button i {
@@ -234,16 +234,16 @@ button:hover {
     border-color: #cbb643; /* Maintain gold border */
 }
 
-/* Responsive design for the 'More' page */
+/* No single-column layout: Always keep 2x2 grid */
 @media (max-width: 600px) {
     .more-button-container {
-        flex-direction: column; /* Stack buttons vertically on small screens */
-        align-items: center; /* Center the buttons */
+        grid-template-columns: repeat(2, 1fr); /* Maintain 2 columns on smaller screens */
     }
     .more-button-item {
-        max-width: 100%; /* Allow buttons to take full width on smaller screens */
+        max-width: 100%; /* Ensure items scale dynamically on smaller screens */
     }
 }
+
 
 /* Convention Info Section */
 #convention_info-container {
