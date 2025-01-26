@@ -194,22 +194,11 @@ button:hover {
 .more-button-container {
     display: grid; /* Use CSS Grid for layout */
     grid-template-columns: repeat(2, 1fr); /* Create 2 equal-width columns */
-    gap: 10px; /* Reduced gap between buttons */
-    margin-top: 20px; /* Space above the button grid */
-    justify-items: center; /* Center buttons horizontally in grid cells */
-    padding: 0 10px; /* Padding to avoid buttons touching edges */
-    max-width: 90%; /* Limit the width of the container */
-}
-
-/* Styling specific to the 'More' page buttons */
-.more-button-container {
-    display: grid; /* Use CSS Grid for layout */
-    grid-template-columns: repeat(2, 1fr); /* Create 2 equal-width columns */
-    gap: 10px; /* Space between buttons */
+    gap: 5px; /* Space between buttons */
     margin-top: 20px; /* Space above the button grid */
     justify-items: center; /* Center buttons horizontally */
     padding: 0 10px; /* Padding to avoid buttons touching edges */
-    max-width: 90%; /* Limit the width of the container */
+    max-width: 100%; /* Limit the width of the container */
 }
 
 /* Styling for each button in the 'More' section */
