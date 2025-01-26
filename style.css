@@ -223,15 +223,16 @@ button:hover {
 /* Convention Info Section */
 #convention_info-container {
     margin: 20px auto; /* Center horizontally */
-    padding: 20px;
-    width: 90%; /* Ensure it doesn’t shrink unnecessarily */
-    max-width: 800px; /* Constrain width on large screens */
+    padding: 20px; /* Add space inside the container */
+    width: 100%; /* Make the container take full width */
+    max-width: 900px; /* Constrain width on large screens */
     background-color: #fff;
     border: 1px solid #ccc;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+/* Content inside convention info container */
 #convention_info-container .convention-content {
     font-size: 16px;
     line-height: 1.8;
@@ -239,7 +240,7 @@ button:hover {
 }
 
 #convention_info-container p {
-    margin: 15px 0; /* Add spacing between paragraphs */
+    margin: 0;
 }
 
 #convention_info-container .convention-title {
@@ -248,7 +249,6 @@ button:hover {
     color: #000;
     display: block;
     margin-bottom: 10px;
-    margin-top: 10px; /* Add some space at the top of each title */
 }
 
 #convention_info-container p span {
@@ -258,21 +258,15 @@ button:hover {
 /* Optional Responsive Tweaks */
 @media (max-width: 600px) {
     #convention_info-container {
-        width: 95%; /* Slightly wider for small screens */
+        width: 100%; /* Allow full width on smaller screens */
         padding: 15px;
     }
 
     #convention_info-container .convention-title {
         font-size: 16px;
-        margin-top: 15px; /* More space above titles on small screens */
     }
 
     #convention_info-container .convention-content {
         font-size: 14px;
     }
-
-    #convention_info-container p {
-        margin: 10px 0; /* Reduce margin for smaller screens */
-    }
 }
-
