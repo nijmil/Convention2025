@@ -217,7 +217,7 @@ button:hover {
     text-align: center; /* Ensure text is centered */
     word-wrap: break-word; /* Prevent long words from overflowing */
     height: 60px; /* Fixed height */
-    width: 100%; /* Full width of the container */
+    width: 400px; /* Full width of the container */
     max-width: 500px; /* Optional: constrain button width to prevent excessive stretching */
 }
 
