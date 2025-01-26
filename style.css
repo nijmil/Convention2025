@@ -407,3 +407,60 @@ button:hover {
         padding: 8px 12px;
     }
 }
+
+
+/* Timetable day styling */
+.timetable-day {
+    display: none; /* Hide all days by default */
+    margin-top: 20px;
+}
+
+.timetable-day h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+table td:nth-child(1) {
+    width: 150px;
+    font-weight: bold;
+}
+
+table td:nth-child(2) {
+    font-style: italic;
+}
+
+button {
+    background-color: black;
+    color: #cbb643;
+    border: 2px solid #cbb643;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 8px;
+    padding: 12px 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    width: 100%;
+    height: 50px;
+}
+
+button:hover {
+    background-color: #cbb643;
+    color: black;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
+    margin: 20px 0;
+}
