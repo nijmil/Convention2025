@@ -220,8 +220,6 @@ button:hover {
     border-color: #cbb643;
 }
 
-
-
 /* Convention Info Section */
 #convention_info-container {
     margin: 20px auto; /* Center horizontally */
@@ -241,7 +239,7 @@ button:hover {
 }
 
 #convention_info-container p {
-    margin: 0;
+    margin: 15px 0; /* Add spacing between paragraphs */
 }
 
 #convention_info-container .convention-title {
@@ -250,6 +248,7 @@ button:hover {
     color: #000;
     display: block;
     margin-bottom: 10px;
+    margin-top: 10px; /* Add some space at the top of each title */
 }
 
 #convention_info-container p span {
@@ -265,9 +264,15 @@ button:hover {
 
     #convention_info-container .convention-title {
         font-size: 16px;
+        margin-top: 15px; /* More space above titles on small screens */
     }
 
     #convention_info-container .convention-content {
         font-size: 14px;
     }
+
+    #convention_info-container p {
+        margin: 10px 0; /* Reduce margin for smaller screens */
+    }
 }
+
