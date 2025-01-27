@@ -36,7 +36,7 @@
         <table>
             <tr class="event" data-time="7:30 - 10:00 PM" data-event="Trail In Dance 'Step Back In Time'">
                 <td>7:30 - 10:00 PM</td>
-                <td>Trail In Dance "Step Back In Time"</td>
+                <td>Trail In Dance 'Step Back In Time'</td>
             </tr>
         </table>
     </div>
@@ -71,13 +71,27 @@
     <!-- Content for Saturday -->
     <div id="saturday-content" class="day-content" style="display: none;">
         <h2>Saturday 13 Sept</h2>
-        <!-- Details will be added later -->
+        <table>
+            <tr class="event" data-time="9:00 - 10:30 AM" data-event="Workshop 1">
+                <td>9:00 - 10:30 AM</td>
+                <td>Workshop 1</td>
+            </tr>
+            <tr class="event" data-time="11:00 - 12:30 PM" data-event="Workshop 2">
+                <td>11:00 - 12:30 PM</td>
+                <td>Workshop 2</td>
+            </tr>
+        </table>
     </div>
 
     <!-- Content for Sunday -->
     <div id="sunday-content" class="day-content" style="display: none;">
         <h2>Sunday 14 Sept</h2>
-        <!-- Details to be added -->
+        <table>
+            <tr class="event" data-time="10:00 - 12:00 PM" data-event="Farewell Dance">
+                <td>10:00 - 12:00 PM</td>
+                <td>Farewell Dance</td>
+            </tr>
+        </table>
     </div>
 </main>
 
@@ -131,13 +145,12 @@
 
     // Function to add event to personal planner (localStorage)
     function addToPlanner(day, time, event) {
-    const eventDetails = { day, time, event };
-    let planner = JSON.parse(localStorage.getItem('personalPlanner')) || [];
-    planner.push(eventDetails);
-    localStorage.setItem('personalPlanner', JSON.stringify(planner));
-    alert(`${event} at ${time} on ${day} added to your planner!`);
-}
-
+        const eventDetails = { day, time, event };
+        let planner = JSON.parse(localStorage.getItem('personalPlanner')) || [];
+        planner.push(eventDetails);
+        localStorage.setItem('personalPlanner', JSON.stringify(planner));
+        alert(`${event} at ${time} on ${day} added to your planner!`);
+    }
 
     // Event listener for clicking on an event row to add to planner
     document.addEventListener('click', function (e) {
