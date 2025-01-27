@@ -131,7 +131,7 @@
 
     // Function to add event to personal planner (localStorage)
     function addToPlanner(day, time, event) {
-    const eventDetails = { day, time, event }; // Use 'event' key consistently
+    const eventDetails = { day, time, event };
     let planner = JSON.parse(localStorage.getItem('personalPlanner')) || [];
     planner.push(eventDetails);
     localStorage.setItem('personalPlanner', JSON.stringify(planner));
