@@ -97,27 +97,39 @@
 
 <script>
     // Variables to store selected day/date
-    let selectedDay = "Thursday 11 Sept"; // Default to Thursday
+    let selectedDay = "Thurs 11 Sept"; // Default to Thursday
 
-    // Get all buttons and content divs
-    const thursdayBtn = document.getElementById('thursday-btn');
-    const fridayBtn = document.getElementById('friday-btn');
-    const saturdayBtn = document.getElementById('saturday-btn');
-    const sundayBtn = document.getElementById('sunday-btn');
+thursdayBtn.addEventListener('click', () => {
+    selectedDay = "Thurs 11 Sept";
+    thursdayContent.style.display = 'block';
+    fridayContent.style.display = 'none';
+    saturdayContent.style.display = 'none';
+    sundayContent.style.display = 'none';
+});
 
-    const thursdayContent = document.getElementById('thursday-content');
-    const fridayContent = document.getElementById('friday-content');
-    const saturdayContent = document.getElementById('saturday-content');
-    const sundayContent = document.getElementById('sunday-content');
+fridayBtn.addEventListener('click', () => {
+    selectedDay = "Fri 12 Sept";
+    thursdayContent.style.display = 'none';
+    fridayContent.style.display = 'block';
+    saturdayContent.style.display = 'none';
+    sundayContent.style.display = 'none';
+});
 
-    // Update selected day/date when a button is clicked
-    thursdayBtn.addEventListener('click', () => {
-        selectedDay = "Thursday 11 Sept";
-        thursdayContent.style.display = 'block';
-        fridayContent.style.display = 'none';
-        saturdayContent.style.display = 'none';
-        sundayContent.style.display = 'none';
-    });
+saturdayBtn.addEventListener('click', () => {
+    selectedDay = "Sat 13 Sept";
+    thursdayContent.style.display = 'none';
+    fridayContent.style.display = 'none';
+    saturdayContent.style.display = 'block';
+    sundayContent.style.display = 'none';
+});
+
+sundayBtn.addEventListener('click', () => {
+    selectedDay = "Sun 14 Sept";
+    thursdayContent.style.display = 'none';
+    fridayContent.style.display = 'none';
+    saturdayContent.style.display = 'none';
+    sundayContent.style.display = 'block';
+});
 
     fridayBtn.addEventListener('click', () => {
         selectedDay = "Friday 12 Sept";
