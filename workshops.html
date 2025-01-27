@@ -28,7 +28,7 @@
     if (planner.length > 0) {
         planner.forEach(event => {
             const listItem = document.createElement('li');
-            listItem.textContent = `${event.time}: ${event.name}`; // Display time and event
+            listItem.textContent = `${event.time}: ${event.event}`; // Fixed key 'event'
             plannerList.appendChild(listItem);
         });
     } else {
@@ -38,6 +38,7 @@
 
 </body>
 </html>
+
 
 
 
