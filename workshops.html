@@ -13,31 +13,80 @@
 </header>
 
 <main>
+    <!-- Day/Date Buttons -->
+    <div class="button-container">
+        <div class="button-item">
+            <button id="thursday-btn">Thurs 11 Sept</button>
+        </div>
+        <div class="button-item">
+            <button id="friday-btn">Fri 12 Sept</button>
+        </div>
+        <div class="button-item">
+            <button id="saturday-btn">Sat 13 Sept</button>
+        </div>
+        <div class="button-item">
+            <button id="sunday-btn">Sun 14 Sept</button>
+        </div>
+    </div>
+
+    <!-- Event Display Table -->
     <div id="planner-content">
-        <h2>Your Selected Workshops</h2>
-        <ul id="planner-list"></ul>
+        <h2 id="planner-heading">Select a day to see your events</h2>
+        <table id="planner-table">
+            <thead>
+                <tr>
+                    <th>Time</th>
+                    <th>Event</th>
+                </tr>
+            </thead>
+            <tbody id="planner-table-body"></tbody>
+        </table>
     </div>
 </main>
 
 <script>
-    // Retrieve the personal planner from localStorage
-    const plannerList = document.getElementById('planner-list');
+    // Retrieve planner data from localStorage
     const planner = JSON.parse(localStorage.getItem('personalPlanner')) || [];
+    const plannerTableBody = document.getElementById('planner-table-body');
+    const plannerHeading = document.getElementById('planner-heading');
 
-    // If there are events in the planner, display them
-    if (planner.length > 0) {
-        planner.forEach(event => {
-            const listItem = document.createElement('li');
-            listItem.textContent = `${event.time}: ${event.event}`; // Fixed key 'event'
-            plannerList.appendChild(listItem);
-        });
-    } else {
-        plannerList.innerHTML = '<li>No events selected yet.</li>';
+    // Function to filter and display events for a selected day
+    function displayEvents(day) {
+        // Clear previous table rows
+        plannerTableBody.innerHTML = '';
+
+        // Filter events for the selected day
+        const eventsForDay = planner.filter(event => event.day === day);
+
+        // Update heading and table content
+        plannerHeading.textContent = `Your Events for ${day}`;
+        if (eventsForDay.length > 0) {
+            eventsForDay.forEach(event => {
+                const row = document.createElement('tr');
+                row.innerHTML = `<td>${event.time}</td><td>${event.event}</td>`;
+                plannerTableBody.appendChild(row);
+            });
+        } else {
+            // If no events for the day
+            plannerTableBody.innerHTML = '<tr><td colspan="2">No events planned for this day.</td></tr>';
+        }
     }
+
+    // Add event listeners to day buttons
+    document.getElementById('thursday-btn').addEventListener('click', () => displayEvents('Thurs 11 Sept'));
+    document.getElementById('friday-btn').addEventListener('click', () => displayEvents('Fri 12 Sept'));
+    document.getElementById('saturday-btn').addEventListener('click', () => displayEvents('Sat 13 Sept'));
+    document.getElementById('sunday-btn').addEventListener('click', () => displayEvents('Sun 14 Sept'));
+
+    // Default display for Thursday
+    document.addEventListener('DOMContentLoaded', () => {
+        displayEvents('Thurs 11 Sept');
+    });
 </script>
 
 </body>
 </html>
+
 
 
 
