@@ -96,90 +96,81 @@
 </main>
 
 <script>
-    // Variables to store selected day/date
-    let selectedDay = "Thurs 11 Sept"; // Default to Thursday
+// Select button and content elements
+const thursdayBtn = document.getElementById('thursday-btn');
+const fridayBtn = document.getElementById('friday-btn');
+const saturdayBtn = document.getElementById('saturday-btn');
+const sundayBtn = document.getElementById('sunday-btn');
 
-thursdayBtn.addEventListener('click', () => {
-    selectedDay = "Thurs 11 Sept";
-    thursdayContent.style.display = 'block';
+const thursdayContent = document.getElementById('thursday-content');
+const fridayContent = document.getElementById('friday-content');
+const saturdayContent = document.getElementById('saturday-content');
+const sundayContent = document.getElementById('sunday-content');
+
+// Variables to store selected day
+let selectedDay = "Thurs 11 Sept";
+
+// Utility function to hide all content and display only the selected day's content
+function showDayContent(day) {
+    thursdayContent.style.display = 'none';
     fridayContent.style.display = 'none';
     saturdayContent.style.display = 'none';
     sundayContent.style.display = 'none';
+
+    if (day === "Thurs 11 Sept") {
+        thursdayContent.style.display = 'block';
+    } else if (day === "Fri 12 Sept") {
+        fridayContent.style.display = 'block';
+    } else if (day === "Sat 13 Sept") {
+        saturdayContent.style.display = 'block';
+    } else if (day === "Sun 14 Sept") {
+        sundayContent.style.display = 'block';
+    }
+}
+
+// Event listeners for button clicks
+thursdayBtn.addEventListener('click', () => {
+    selectedDay = "Thurs 11 Sept";
+    showDayContent(selectedDay);
 });
 
 fridayBtn.addEventListener('click', () => {
     selectedDay = "Fri 12 Sept";
-    thursdayContent.style.display = 'none';
-    fridayContent.style.display = 'block';
-    saturdayContent.style.display = 'none';
-    sundayContent.style.display = 'none';
+    showDayContent(selectedDay);
 });
 
 saturdayBtn.addEventListener('click', () => {
     selectedDay = "Sat 13 Sept";
-    thursdayContent.style.display = 'none';
-    fridayContent.style.display = 'none';
-    saturdayContent.style.display = 'block';
-    sundayContent.style.display = 'none';
+    showDayContent(selectedDay);
 });
 
 sundayBtn.addEventListener('click', () => {
     selectedDay = "Sun 14 Sept";
-    thursdayContent.style.display = 'none';
-    fridayContent.style.display = 'none';
-    saturdayContent.style.display = 'none';
-    sundayContent.style.display = 'block';
+    showDayContent(selectedDay);
 });
 
-    fridayBtn.addEventListener('click', () => {
-        selectedDay = "Friday 12 Sept";
-        thursdayContent.style.display = 'none';
-        fridayContent.style.display = 'block';
-        saturdayContent.style.display = 'none';
-        sundayContent.style.display = 'none';
-    });
+// Function to add event to personal planner (localStorage)
+function addToPlanner(day, time, event) {
+    const eventDetails = { day, time, event };
+    let planner = JSON.parse(localStorage.getItem('personalPlanner')) || [];
+    planner.push(eventDetails);
+    localStorage.setItem('personalPlanner', JSON.stringify(planner));
+    alert(`${event} at ${time} on ${day} added to your planner!`);
+}
 
-    saturdayBtn.addEventListener('click', () => {
-        selectedDay = "Saturday 13 Sept";
-        thursdayContent.style.display = 'none';
-        fridayContent.style.display = 'none';
-        saturdayContent.style.display = 'block';
-        sundayContent.style.display = 'none';
-    });
-
-    sundayBtn.addEventListener('click', () => {
-        selectedDay = "Sunday 14 Sept";
-        thursdayContent.style.display = 'none';
-        fridayContent.style.display = 'none';
-        saturdayContent.style.display = 'none';
-        sundayContent.style.display = 'block';
-    });
-
-    // Function to add event to personal planner (localStorage)
-    function addToPlanner(day, time, event) {
-        const eventDetails = { day, time, event };
-        let planner = JSON.parse(localStorage.getItem('personalPlanner')) || [];
-        planner.push(eventDetails);
-        localStorage.setItem('personalPlanner', JSON.stringify(planner));
-        alert(`${event} at ${time} on ${day} added to your planner!`);
+// Event listener for clicking on an event row to add to planner
+document.addEventListener('click', function (e) {
+    if (e.target && e.target.closest('.event')) {
+        const eventTime = e.target.closest('.event').getAttribute('data-time');
+        const eventName = e.target.closest('.event').getAttribute('data-event');
+        addToPlanner(selectedDay, eventTime, eventName);
     }
+});
 
-    // Event listener for clicking on an event row to add to planner
-    document.addEventListener('click', function (e) {
-        if (e.target && e.target.closest('.event')) {
-            const eventTime = e.target.closest('.event').getAttribute('data-time');
-            const eventName = e.target.closest('.event').getAttribute('data-event');
-            addToPlanner(selectedDay, eventTime, eventName);
-        }
-    });
-
-    // Set Thursday as default display on page load
-    document.addEventListener('DOMContentLoaded', () => {
-        thursdayContent.style.display = 'block';
-        fridayContent.style.display = 'none';
-        saturdayContent.style.display = 'none';
-        sundayContent.style.display = 'none';
-    });
+// Set Thursday as default display on page load
+document.addEventListener('DOMContentLoaded', () => {
+    showDayContent("Thurs 11 Sept");
+});
 </script>
 
 <nav class="bottom-nav">
@@ -189,6 +180,6 @@ sundayBtn.addEventListener('click', () => {
         <li><a href="more.html"><i class="fas fa-info-circle"></i> More</a></li>
     </ul>
 </nav>
+
 </body>
 </html>
-
