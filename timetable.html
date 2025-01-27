@@ -1,100 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Timetable</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-</head>
-<body>
-
-<header>
-    <h1>Convention Timetable</h1>
-</header>
-
-<main>
-    <!-- Button container for date selection -->
-    <div class="button-container">
-        <div class="button-item">
-            <button id="thursday-btn">Thurs 11 Sept</button>
-        </div>
-        <div class="button-item">
-            <button id="friday-btn">Fri 12 Sept</button>
-        </div>
-        <div class="button-item">
-            <button id="saturday-btn">Sat 13 Sept</button>
-        </div>
-        <div class="button-item">
-            <button id="sunday-btn">Sun 14 Sept</button>
-        </div>
-    </div>
-
-    <!-- Content for Thursday (default) -->
-    <div id="thursday-content" class="day-content">
-        <h2>Thursday 11 Sept</h2>
-        <table>
-            <tr class="event" data-time="7:30 - 10:00 PM" data-event="Trail In Dance 'Step Back In Time'">
-                <td>7:30 - 10:00 PM</td>
-                <td>Trail In Dance "Step Back In Time"</td>
-            </tr>
-        </table>
-    </div>
-
-    <!-- Content for Friday -->
-    <div id="friday-content" class="day-content" style="display: none;">
-        <h2>Friday 12 Sept</h2>
-        <table>
-            <tr class="event" data-time="11:00 - 12:00 PM" data-event="Leaders Meeting">
-                <td>11:00 - 12:00 PM</td>
-                <td>Leaders Meeting</td>
-            </tr>
-            <tr class="event" data-time="12:00 - 12:30 PM" data-event="Lunch">
-                <td>12:00 - 12:30 PM</td>
-                <td>Lunch</td>
-            </tr>
-            <tr class="event" data-time="12:30 - 1:30 PM" data-event="AGM">
-                <td>12:30 - 1:30 PM</td>
-                <td>AGM</td>
-            </tr>
-            <tr class="event" data-time="3:00 - 5:00 PM" data-event="Choreo Challenge">
-                <td>3:00 - 5:00 PM</td>
-                <td>Choreo Challenge</td>
-            </tr>
-            <tr class="event" data-time="6:00 PM" data-event="Social">
-                <td>6:00 PM</td>
-                <td>Social</td>
-            </tr>
-        </table>
-    </div>
-
-    <!-- Content for Saturday -->
-    <div id="saturday-content" class="day-content" style="display: none;">
-        <h2>Saturday 13 Sept</h2>
-        <!-- Details will be added later -->
-    </div>
-
-    <!-- Content for Sunday -->
-    <div id="sunday-content" class="day-content" style="display: none;">
-        <h2>Sunday 14 Sept</h2>
-        <!-- Details to be added -->
-    </div>
-</main>
-
 <script>
-    // Get all buttons and content divs
-    const thursdayBtn = document.getElementById('thursday-btn');
-    const fridayBtn = document.getElementById('friday-btn');
-    const saturdayBtn = document.getElementById('saturday-btn');
-    const sundayBtn = document.getElementById('sunday-btn');
+    // Variables to store selected day/date
+    let selectedDay = "Thursday 11 Sept"; // Default to Thursday
 
-    const thursdayContent = document.getElementById('thursday-content');
-    const fridayContent = document.getElementById('friday-content');
-    const saturdayContent = document.getElementById('saturday-content');
-    const sundayContent = document.getElementById('sunday-content');
-
-    // Add event listeners to buttons
+    // Update selected day/date when a button is clicked
     thursdayBtn.addEventListener('click', () => {
+        selectedDay = "Thursday 11 Sept";
         thursdayContent.style.display = 'block';
         fridayContent.style.display = 'none';
         saturdayContent.style.display = 'none';
@@ -102,6 +12,7 @@
     });
 
     fridayBtn.addEventListener('click', () => {
+        selectedDay = "Friday 12 Sept";
         thursdayContent.style.display = 'none';
         fridayContent.style.display = 'block';
         saturdayContent.style.display = 'none';
@@ -109,6 +20,7 @@
     });
 
     saturdayBtn.addEventListener('click', () => {
+        selectedDay = "Saturday 13 Sept";
         thursdayContent.style.display = 'none';
         fridayContent.style.display = 'none';
         saturdayContent.style.display = 'block';
@@ -116,6 +28,7 @@
     });
 
     sundayBtn.addEventListener('click', () => {
+        selectedDay = "Sunday 14 Sept";
         thursdayContent.style.display = 'none';
         fridayContent.style.display = 'none';
         saturdayContent.style.display = 'none';
@@ -123,20 +36,20 @@
     });
 
     // Function to add event to personal planner (localStorage)
-    function addToPlanner(time, event) {
-        const eventDetails = { time, event };
+    function addToPlanner(day, time, event) {
+        const eventDetails = { day, time, event };
         let planner = JSON.parse(localStorage.getItem('personalPlanner')) || [];
         planner.push(eventDetails);
         localStorage.setItem('personalPlanner', JSON.stringify(planner));
-        alert(`${event} at ${time} added to your planner!`);
+        alert(`${event} at ${time} on ${day} added to your planner!`);
     }
 
     // Event listener for clicking on an event row to add to planner
-    document.addEventListener('click', function(e) {
+    document.addEventListener('click', function (e) {
         if (e.target && e.target.closest('.event')) {
             const eventTime = e.target.closest('.event').getAttribute('data-time');
             const eventName = e.target.closest('.event').getAttribute('data-event');
-            addToPlanner(eventTime, eventName);
+            addToPlanner(selectedDay, eventTime, eventName);
         }
     });
 
@@ -148,13 +61,4 @@
         sundayContent.style.display = 'none';
     });
 </script>
-<nav class="bottom-nav">
-    <ul>
-        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
-        <li><a href="workshops.html"><i class="fas fa-calendar-day"></i> My Planner</a></li>
-        <li><a href="more.html"><i class="fas fa-info-circle"></i> More</a></li>
-    </ul>
-</nav>
-</body>
-</html>
 
