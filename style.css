@@ -465,44 +465,17 @@ button:hover {
     margin: 20px 0;
 }
 
-/* Planner section styles */
-#planner-list {
-    margin-top: 20px;
-}
-
-.planner-item {
-    background-color: #f4f4f4;
-    margin: 10px 0;
-    padding: 10px;
-    border-radius: 8px;
-    border: 1px solid #ddd;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
+/* Style for the Remove button */
 .remove-btn {
-    background-color: #f44336;
+    font-size: 0.8rem; /* Smaller font size */
+    padding: 5px 10px; /* Reduced padding */
+    background-color: #ff4d4d; /* Red background */
     color: white;
     border: none;
     border-radius: 5px;
-    padding: 5px 10px;
     cursor: pointer;
-    font-size: 14px;
 }
 
 .remove-btn:hover {
-    background-color: #e53935;
-}
-
-.remove-btn i {
-    margin-right: 5px; /* Add space between icon and text */
-}
-
-/* Styling for the empty message */
-#empty-message {
-    color: #999;
-    font-size: 16px;
-    text-align: center;
-    margin-top: 20px;
+    background-color: #ff1a1a; /* Darker red on hover */
 }
