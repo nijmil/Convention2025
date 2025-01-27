@@ -465,17 +465,20 @@ button:hover {
     margin: 20px 0;
 }
 
-/* Style for the Remove button */
+/* Style for the X icon button */
 .remove-btn {
-    font-size: 0.8rem; /* Smaller font size */
-    padding: 5px 10px; /* Reduced padding */
-    background-color: #ff4d4d; /* Red background */
-    color: white;
+    background: none;
     border: none;
-    border-radius: 5px;
+    color: #ff4d4d; /* Red color */
+    font-size: 1.2rem; /* Icon size */
     cursor: pointer;
+    padding: 0;
 }
 
 .remove-btn:hover {
-    background-color: #ff1a1a; /* Darker red on hover */
+    color: #ff1a1a; /* Darker red on hover */
+}
+
+.remove-btn i {
+    font-size: 1.2rem; /* Icon size */
 }
