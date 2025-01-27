@@ -3,89 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Personal Planner</title>
+    <title>My Planner</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 <body>
 
 <header>
-    <h1>Your Personal Planner</h1>
+    <h1>My Planner</h1>
 </header>
 
 <main>
-    <!-- Day/Date Buttons -->
-    <div class="button-container">
-        <div class="button-item">
-            <button id="thursday-btn">Thurs 11 Sept</button>
-        </div>
-        <div class="button-item">
-            <button id="friday-btn">Fri 12 Sept</button>
-        </div>
-        <div class="button-item">
-            <button id="saturday-btn">Sat 13 Sept</button>
-        </div>
-        <div class="button-item">
-            <button id="sunday-btn">Sun 14 Sept</button>
-        </div>
+    <h2>Your Saved Events</h2>
+    <div id="planner-list">
+        <!-- Events will be dynamically added here -->
     </div>
-
-    <!-- Event Display Table -->
-    <div id="planner-content">
-        <h2 id="planner-heading">Select a day to see your events</h2>
-        <table id="planner-table">
-            <thead>
-                <tr>
-                    <th>Time</th>
-                    <th>Event</th>
-                </tr>
-            </thead>
-            <tbody id="planner-table-body"></tbody>
-        </table>
-    </div>
+    <p id="empty-message" style="display: none;">No events added yet.</p>
 </main>
 
 <script>
-    // Retrieve planner data from localStorage
+// Function to load and display saved events
+function loadPlanner() {
     const planner = JSON.parse(localStorage.getItem('personalPlanner')) || [];
-    const plannerTableBody = document.getElementById('planner-table-body');
-    const plannerHeading = document.getElementById('planner-heading');
+    const plannerList = document.getElementById('planner-list');
+    const emptyMessage = document.getElementById('empty-message');
 
-    // Function to filter and display events for a selected day
-    function displayEvents(day) {
-        // Clear previous table rows
-        plannerTableBody.innerHTML = '';
+    // Clear the list before adding
+    plannerList.innerHTML = '';
 
-        // Filter events for the selected day
-        const eventsForDay = planner.filter(event => event.day === day);
-
-        // Update heading and table content
-        plannerHeading.textContent = `Your Events for ${day}`;
-        if (eventsForDay.length > 0) {
-            eventsForDay.forEach(event => {
-                const row = document.createElement('tr');
-                row.innerHTML = `<td>${event.time}</td><td>${event.event}</td>`;
-                plannerTableBody.appendChild(row);
-            });
-        } else {
-            // If no events for the day
-            plannerTableBody.innerHTML = '<tr><td colspan="2">No events planned for this day.</td></tr>';
-        }
+    if (planner.length === 0) {
+        emptyMessage.style.display = 'block';
+    } else {
+        emptyMessage.style.display = 'none';
+        planner.forEach((event, index) => {
+            const eventItem = document.createElement('div');
+            eventItem.classList.add('planner-item');
+            eventItem.innerHTML = `
+                <p><strong>${event.event}</strong><br>${event.time} on ${event.day}</p>
+                <button class="remove-btn" data-index="${index}">Remove</button>
+            `;
+            plannerList.appendChild(eventItem);
+        });
     }
+}
 
-    // Add event listeners to day buttons
-    document.getElementById('thursday-btn').addEventListener('click', () => displayEvents('Thurs 11 Sept'));
-    document.getElementById('friday-btn').addEventListener('click', () => displayEvents('Fri 12 Sept'));
-    document.getElementById('saturday-btn').addEventListener('click', () => displayEvents('Sat 13 Sept'));
-    document.getElementById('sunday-btn').addEventListener('click', () => displayEvents('Sun 14 Sept'));
+// Function to remove an event from the planner
+function removeFromPlanner(index) {
+    const planner = JSON.parse(localStorage.getItem('personalPlanner')) || [];
+    planner.splice(index, 1); // Remove the event at the specified index
+    localStorage.setItem('personalPlanner', JSON.stringify(planner));
+    loadPlanner(); // Reload the planner list after removal
+}
 
-    // Default display for Thursday
-    document.addEventListener('DOMContentLoaded', () => {
-        displayEvents('Thurs 11 Sept');
-    });
+// Event listener for the remove buttons
+document.addEventListener('click', function (e) {
+    if (e.target && e.target.classList.contains('remove-btn')) {
+        const index = e.target.getAttribute('data-index');
+        removeFromPlanner(index);
+    }
+});
+
+// Load the planner on page load
+document.addEventListener('DOMContentLoaded', loadPlanner);
 </script>
+
+<nav class="bottom-nav">
+    <ul>
+        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="timetable.html"><i class="fas fa-calendar-day"></i> Timetable</a></li>
+        <li><a href="more.html"><i class="fas fa-info-circle"></i> More</a></li>
+    </ul>
+</nav>
 
 </body>
 </html>
+
 
 
 
