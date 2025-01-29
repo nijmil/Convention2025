@@ -1,17 +1,121 @@
-/* Style for the X icon button */
-.remove-btn {
-    background: none;
-    border: none;
-    color: #ff4d4d; /* Red color */
-    font-size: 1rem;
-    cursor: pointer;
-    padding: 5px;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Personal Planner</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
 
-.remove-btn:hover {
-    color: #ff1a1a; /* Darker red on hover */
-}
+<header>
+    <h1>Your Personal Planner</h1>
+</header>
 
-.remove-btn i {
-    font-size: 1rem; /* Icon size */
-}
+<main>
+    <!-- Day/Date Buttons -->
+    <div class="button-container">
+        <div class="button-item">
+            <button id="thursday-btn">Thurs 11 Sept</button>
+        </div>
+        <div class="button-item">
+            <button id="friday-btn">Fri 12 Sept</button>
+        </div>
+        <div class="button-item">
+            <button id="saturday-btn">Sat 13 Sept</button>
+        </div>
+        <div class="button-item">
+            <button id="sunday-btn">Sun 14 Sept</button>
+        </div>
+    </div>
+
+    <!-- Event Display Table -->
+    <div id="planner-content">
+        <h2 id="planner-heading">Select a day to see your events</h2>
+        <table id="planner-table">
+            <thead>
+                <tr>
+                    <th>Time</th>
+                    <th>Event</th>
+                    <th></th> <!-- Empty header for the X icon -->
+                </tr>
+            </thead>
+            <tbody id="planner-table-body"></tbody>
+        </table>
+    </div>
+</main>
+
+<script>
+    let planner = JSON.parse(localStorage.getItem('personalPlanner')) || [];
+    const plannerTableBody = document.getElementById('planner-table-body');
+    const plannerHeading = document.getElementById('planner-heading');
+    let currentDay = 'Thurs 11 Sept'; // Default selected day
+
+    // Function to display events for a selected day
+    function displayEvents(day) {
+        currentDay = day; // Store selected day
+        plannerTableBody.innerHTML = ''; // Clear existing events
+
+        // Filter events for the selected day
+        const eventsForDay = planner.filter(event => event.day === day);
+
+        // Update heading
+        plannerHeading.textContent = `Your Events for ${day}`;
+
+        if (eventsForDay.length > 0) {
+            eventsForDay.forEach((event, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${event.time}</td>
+                    <td>${event.event}</td>
+                    <td>
+                        <button class="remove-btn" data-index="${index}">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </td>
+                `;
+                plannerTableBody.appendChild(row);
+            });
+        } else {
+            plannerTableBody.innerHTML = '<tr><td colspan="3">No events planned for this day.</td></tr>';
+        }
+    }
+
+    // Function to remove an event from the planner
+    function removeEvent(index) {
+        // Find the actual index in the full planner array
+        const eventsForDay = planner.filter(event => event.day === currentDay);
+        const eventToRemove = eventsForDay[index];
+
+        // Remove only the matching event from planner array
+        planner = planner.filter(event => !(event.day === eventToRemove.day && event.time === eventToRemove.time && event.event === eventToRemove.event));
+
+        // Update localStorage and refresh display
+        localStorage.setItem('personalPlanner', JSON.stringify(planner));
+        displayEvents(currentDay);
+    }
+
+    // Event listener for the remove buttons
+    document.addEventListener('click', (e) => {
+        if (e.target.closest('.remove-btn')) {
+            const index = e.target.closest('.remove-btn').getAttribute('data-index');
+            removeEvent(index);
+        }
+    });
+
+    // Add event listeners to day buttons
+    document.getElementById('thursday-btn').addEventListener('click', () => displayEvents('Thurs 11 Sept'));
+    document.getElementById('friday-btn').addEventListener('click', () => displayEvents('Fri 12 Sept'));
+    document.getElementById('saturday-btn').addEventListener('click', () => displayEvents('Sat 13 Sept'));
+    document.getElementById('sunday-btn').addEventListener('click', () => displayEvents('Sun 14 Sept'));
+
+    // Default display for Thursday
+    document.addEventListener('DOMContentLoaded', () => {
+        displayEvents(currentDay);
+    });
+</script>
+
+</body>
+</html>
+
