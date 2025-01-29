@@ -470,9 +470,9 @@ button:hover {
     background: none;
     border: none;
     color: #ff4d4d; /* Red color */
-    font-size: 1.2rem; /* Icon size */
+    font-size: 1rem;
     cursor: pointer;
-    padding: 0;
+    padding: 5px;
 }
 
 .remove-btn:hover {
@@ -480,5 +480,5 @@ button:hover {
 }
 
 .remove-btn i {
-    font-size: 1.2rem; /* Icon size */
+    font-size: 1rem; /* Icon size */
 }
