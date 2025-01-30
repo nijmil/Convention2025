@@ -431,7 +431,7 @@ table td {
 }
 
 table td:nth-child(1) {
-    width: 150px;
+    width: 120px;
     font-weight: bold;
 }
 
