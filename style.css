@@ -482,3 +482,33 @@ button:hover {
 .remove-btn i {
     font-size: 1rem; /* Icon size */
 }
+
+/* Things to Do Page Styling */
+.things-to-do-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+}
+
+.things-to-do-container h2 {
+    font-size: 24px;
+    color: black;
+}
+
+.things-to-do-item {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.things-to-do-item h3 {
+    font-size: 18px;
+    color: #333;
+}
+
+.things-to-do-item p {
+    font-size: 14px;
+    color: #555;
+}
