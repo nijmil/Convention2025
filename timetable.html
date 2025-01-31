@@ -133,7 +133,10 @@
                 <td>12:00 - 12:55 PM</td>
                 <td><b>Minerdome Hall 1, Court 2</b><br>Morning Tea</td>
             </tr>
-            <tr class="event" data-time="2:30 PM" data-event="Afternoon Tea">
+            <tr class="event" 
+                data-time="2:30 PM" 
+                data-event="Afternoon Tea" 
+                data-location="Minerdome Hall 1, Court 2">
                 <td>2:30 PM</td>
                 <td><b>Minerdome Hall 1, Court 2</b><br>Afternoon Tea</td>
             </tr>
@@ -239,20 +242,23 @@ sundayBtn.addEventListener('click', () => {
 });
 
 // Function to add event to personal planner (localStorage)
-function addToPlanner(day, time, event) {
-    const eventDetails = { day, time, event };
+function addToPlanner(day, time, event, location) {
+    const eventDetails = { day, time, event, location }; // Include location
     let planner = JSON.parse(localStorage.getItem('personalPlanner')) || [];
     planner.push(eventDetails);
     localStorage.setItem('personalPlanner', JSON.stringify(planner));
-    alert(`${event} at ${time} on ${day} added to your planner!`);
+    alert(`${event} at ${time} (${location}) on ${day} added to your planner!`);
 }
 
 // Event listener for clicking on an event row to add to planner
 document.addEventListener('click', function (e) {
     if (e.target && e.target.closest('.event')) {
-        const eventTime = e.target.closest('.event').getAttribute('data-time');
-        const eventName = e.target.closest('.event').getAttribute('data-event');
-        addToPlanner(selectedDay, eventTime, eventName);
+        const eventRow = e.target.closest('.event');
+        const eventTime = eventRow.getAttribute('data-time');
+        const eventName = eventRow.getAttribute('data-event');
+        const eventLocation = eventRow.getAttribute('data-location') || 'Location not specified'; // Handle missing locations
+
+        addToPlanner(selectedDay, eventTime, eventName, eventLocation);
     }
 });
 
