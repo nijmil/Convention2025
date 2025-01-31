@@ -67,14 +67,17 @@
             eventsForDay.forEach((event, index) => {
                 const row = document.createElement('tr');
                 row.innerHTML = `
-                    <td>${event.time}</td>
-                    <td>${event.event}</td>
-                    <td>
-                        <button class="remove-btn" data-index="${index}">
-                            <i class="fas fa-times"></i>
-                        </button>
-                    </td>
-                `;
+                <td>${event.time}</td>
+                <td>
+                    <b>${event.location ? event.location : 'No location specified'}</b><br>
+                    ${event.event}
+                </td>
+                <td>
+        <button class="remove-btn" data-index="${index}">
+            <i class="fas fa-times"></i>
+        </button>
+    </td>
+`;
                 plannerTableBody.appendChild(row);
             });
         } else {
