@@ -83,16 +83,17 @@
                 console.log('Notification permission granted.');
 
                 // Get Firebase token for push notifications
-                messaging.getToken({ vapidKey: 'YOUR_VAPID_KEY' }).then((currentToken) => {
-                    if (currentToken) {
-                        console.log('Token:', currentToken);
-                        // Save the token for later use (e.g., for sending push notifications)
-                    } else {
-                        console.log('No registration token available.');
-                    }
-                }).catch((err) => {
-                    console.error('An error occurred while retrieving token. ', err);
-                });
+                messaging.getToken({ vapidKey: 'BP_1HC6r_YeG1HpxTjrdekhSiIqzjzGllwvJM7ZoDGDDWJE0nf-1mWNmZmc-nAkjDLwkD02Pf34oV3L-X3nxkb8' }).then((currentToken) => {
+    if (currentToken) {
+        console.log('Token:', currentToken);
+        // Save the token for later use (e.g., for sending push notifications)
+    } else {
+        console.log('No registration token available.');
+    }
+}).catch((err) => {
+    console.error('An error occurred while retrieving token. ', err);
+});
+
             } else {
                 console.log('Notification permission denied.');
             }
