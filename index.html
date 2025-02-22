@@ -60,6 +60,10 @@
 
     <!-- Firebase Initialization and Push Notification Logic -->
     <script type="module">
+        // Import the necessary Firebase modules
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+        import { getMessaging, getToken, onMessage } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-messaging.js";
+
         // Firebase configuration (replace with your own)
         const firebaseConfig = {
             apiKey: "AIzaSyBJqW1l2-AO0Utpszml1r7S9exdcu1IRNo", // Your API Key
@@ -72,10 +76,10 @@
         };
 
         // Initialize Firebase
-        const app = firebase.initializeApp(firebaseConfig);
+        const app = initializeApp(firebaseConfig);
 
         // Initialize Firebase Messaging
-        const messaging = firebase.messaging();
+        const messaging = getMessaging(app);
 
         // Request permission for notifications
         Notification.requestPermission().then(permission => {
@@ -83,7 +87,7 @@
                 console.log('Notification permission granted.');
 
                 // Get Firebase token for push notifications
-                messaging.getToken({ vapidKey: 'BP_1HC6r_YeG1HpxTjrdekhSiIqzjzGllwvJM7ZoDGDDWJE0nf-1mWNmZmc-nAkjDLwkD02Pf34oV3L-X3nxkb8' }).then((currentToken) => {
+                getToken(messaging, { vapidKey: 'BP_1HC6r_YeG1HpxTjrdekhSiIqzjzGllwvJM7ZoDGDDWJE0nf-1mWNmZmc-nAkjDLwkD02Pf34oV3L-X3nxkb8' }).then((currentToken) => {
                     if (currentToken) {
                         console.log('Token:', currentToken);
                         // Save the token for later use (e.g., for sending push notifications)
@@ -100,7 +104,7 @@
         });
 
         // Handle incoming messages when the app is in the foreground
-        messaging.onMessage((payload) => {
+        onMessage(messaging, (payload) => {
             console.log('Message received: ', payload);
             // Handle the notification (e.g., display it in the browser)
             alert(payload.notification.title);
