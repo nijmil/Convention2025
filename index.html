@@ -7,9 +7,9 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
-    <!-- Firebase App and Firebase Cloud Messaging SDKs -->
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-messaging.js"></script>
+    <!-- Firebase App and Firebase Cloud Messaging SDKs as modules -->
+    <script type="module" src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/9.6.1/firebase-messaging.js"></script>
 </head>
 <body>
     <header>
@@ -70,35 +70,35 @@
             appId: "1:701394776928:web:61ed15831f15240c56a405", // Your App ID
             measurementId: "G-4ED38LZRH4" // Your Measurement ID
         };
-    
+
         // Initialize Firebase
         const app = firebase.initializeApp(firebaseConfig);
-    
+
         // Initialize Firebase Messaging
         const messaging = firebase.messaging();
-    
+
         // Request permission for notifications
         Notification.requestPermission().then(permission => {
             if (permission === 'granted') {
                 console.log('Notification permission granted.');
-    
+
                 // Get Firebase token for push notifications
                 messaging.getToken({ vapidKey: 'BP_1HC6r_YeG1HpxTjrdekhSiIqzjzGllwvJM7ZoDGDDWJE0nf-1mWNmZmc-nAkjDLwkD02Pf34oV3L-X3nxkb8' }).then((currentToken) => {
-        if (currentToken) {
-            console.log('Token:', currentToken);
-            // Save the token for later use (e.g., for sending push notifications)
-        } else {
-            console.log('No registration token available.');
-        }
-    }).catch((err) => {
-        console.error('An error occurred while retrieving token. ', err);
-    });
-    
+                    if (currentToken) {
+                        console.log('Token:', currentToken);
+                        // Save the token for later use (e.g., for sending push notifications)
+                    } else {
+                        console.log('No registration token available.');
+                    }
+                }).catch((err) => {
+                    console.error('An error occurred while retrieving token. ', err);
+                });
+
             } else {
                 console.log('Notification permission denied.');
             }
         });
-    
+
         // Handle incoming messages when the app is in the foreground
         messaging.onMessage((payload) => {
             console.log('Message received: ', payload);
