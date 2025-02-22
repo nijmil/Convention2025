@@ -59,7 +59,7 @@
     </nav>
 
     <!-- Firebase Initialization and Push Notification Logic -->
-    <script>
+    <script type="module">
         // Firebase configuration (replace with your own)
         const firebaseConfig = {
             apiKey: "AIzaSyBJqW1l2-AO0Utpszml1r7S9exdcu1IRNo", // Your API Key
@@ -70,35 +70,35 @@
             appId: "1:701394776928:web:61ed15831f15240c56a405", // Your App ID
             measurementId: "G-4ED38LZRH4" // Your Measurement ID
         };
-
+    
         // Initialize Firebase
         const app = firebase.initializeApp(firebaseConfig);
-
+    
         // Initialize Firebase Messaging
         const messaging = firebase.messaging();
-
+    
         // Request permission for notifications
         Notification.requestPermission().then(permission => {
             if (permission === 'granted') {
                 console.log('Notification permission granted.');
-
+    
                 // Get Firebase token for push notifications
                 messaging.getToken({ vapidKey: 'BP_1HC6r_YeG1HpxTjrdekhSiIqzjzGllwvJM7ZoDGDDWJE0nf-1mWNmZmc-nAkjDLwkD02Pf34oV3L-X3nxkb8' }).then((currentToken) => {
-    if (currentToken) {
-        console.log('Token:', currentToken);
-        // Save the token for later use (e.g., for sending push notifications)
-    } else {
-        console.log('No registration token available.');
-    }
-}).catch((err) => {
-    console.error('An error occurred while retrieving token. ', err);
-});
-
+        if (currentToken) {
+            console.log('Token:', currentToken);
+            // Save the token for later use (e.g., for sending push notifications)
+        } else {
+            console.log('No registration token available.');
+        }
+    }).catch((err) => {
+        console.error('An error occurred while retrieving token. ', err);
+    });
+    
             } else {
                 console.log('Notification permission denied.');
             }
         });
-
+    
         // Handle incoming messages when the app is in the foreground
         messaging.onMessage((payload) => {
             console.log('Message received: ', payload);
@@ -106,19 +106,6 @@
             alert(payload.notification.title);
         });
     </script>
-<!-- Firebase Service Worker Registration -->
-<script>
-    // Check if the browser supports service workers
-    if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/firebase-messaging-sw.js')
-            .then(function(registration) {
-                console.log('Service Worker registered with scope: ', registration.scope);
-            })
-            .catch(function(error) {
-                console.error('Service Worker registration failed: ', error);
-            });
-    }
-</script>
 
 </body>
 </html>
