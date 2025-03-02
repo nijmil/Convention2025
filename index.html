@@ -97,23 +97,10 @@
 
     <!-- Firebase Initialization and Push Notification Logic -->
     <script type="module">
-
-getToken(messaging, { vapidKey: 'BP_1HC6r_YeG1HpxTjrdekhSiIqzjzGllwvJM7ZoDGDDWJE0nf-1mWNmZmc-nAkjDLwkD02Pf34oV3L-X3nxkb8' })
-  .then((currentToken) => {
-    if (currentToken) {
-      console.log('FCM Token:', currentToken);
-      alert('Your FCM Token: ' + currentToken);
-    } else {
-      console.log('No registration token available.');
-    }
-  })
-  .catch((err) => {
-    console.error('An error occurred while retrieving token.', err);
-  });
-  
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
         import { getMessaging, getToken, onMessage } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-messaging.js";
 
+        // Firebase config object
         const firebaseConfig = {
             apiKey: "AIzaSyBJqW1l2-AO0Utpszml1r7S9exdcu1IRNo",
             authDomain: "convention-2025-44080.firebaseapp.com",
@@ -124,26 +111,34 @@ getToken(messaging, { vapidKey: 'BP_1HC6r_YeG1HpxTjrdekhSiIqzjzGllwvJM7ZoDGDDWJE
             measurementId: "G-4ED38LZRH4"
         };
 
+        // Initialize Firebase app
         const app = initializeApp(firebaseConfig);
         const messaging = getMessaging(app);
 
+        // Request notification permission and get the FCM token
         Notification.requestPermission().then(permission => {
             if (permission === 'granted') {
                 console.log('Notification permission granted.');
-                getToken(messaging, { vapidKey: 'BP_1HC6r_YeG1HpxTjrdekhSiIqzjzGllwvJM7ZoDGDDWJE0nf-1mWNmZmc-nAkjDLwkD02Pf34oV3L-X3nxkb8' }).then((currentToken) => {
-                    if (currentToken) {
-                        console.log('Token:', currentToken);
-                    } else {
-                        console.log('No registration token available.');
-                    }
-                }).catch((err) => {
-                    console.error('An error occurred while retrieving token. ', err);
-                });
+                // Retrieve the FCM token
+                getToken(messaging, { vapidKey: 'BP_1HC6r_YeG1HpxTjrdekhSiIqzjzGllwvJM7ZoDGDDWJE0nf-1mWNmZmc-nAkjDLwkD02Pf34oV3L-X3nxkb8' })
+                    .then((currentToken) => {
+                        if (currentToken) {
+                            console.log('FCM Token:', currentToken);
+                            alert('Your FCM Token: ' + currentToken);
+                            // Optionally save the token to your server here
+                        } else {
+                            console.log('No registration token available.');
+                        }
+                    })
+                    .catch((err) => {
+                        console.error('An error occurred while retrieving token. ', err);
+                    });
             } else {
                 console.log('Notification permission denied.');
             }
         });
 
+        // Handle incoming messages
         onMessage(messaging, (payload) => {
             console.log('Message received: ', payload);
             alert(payload.notification.title);
