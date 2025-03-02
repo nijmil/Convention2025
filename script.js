@@ -33,5 +33,54 @@ window.addEventListener('load', () => {
     installBanner.querySelector('button').addEventListener('click', () => {
         installBanner.style.display = 'none';
     });
+
+    // Add Firebase token retrieval logic
+    initializeFirebaseMessaging();
 });
+
+// Function to initialize Firebase Messaging and get FCM token
+function initializeFirebaseMessaging() {
+    // Make sure Firebase is loaded and messaging is available
+    if (firebase && firebase.messaging) {
+        const messaging = firebase.messaging();
+
+        // Request permission to send notifications
+        messaging.requestPermission()
+            .then(() => {
+                console.log("Notification permission granted.");
+                return messaging.getToken(); // Retrieve the FCM token
+            })
+            .then((token) => {
+                console.log("FCM Token retrieved:", token);
+                // Here, you would typically send the token to your server for storage
+                // For example, save it in your backend database so you can send messages
+                saveTokenToServer(token);
+            })
+            .catch((error) => {
+                console.error("Error while getting permission or token:", error);
+            });
+    } else {
+        console.error("Firebase Messaging is not available.");
+    }
+}
+
+// Example function to save the token to your server
+function saveTokenToServer(token) {
+    // Send the token to your server (replace with your server API)
+    fetch('/save-token', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ token: token }),
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log("Token saved to server:", data);
+    })
+    .catch(error => {
+        console.error("Error saving token:", error);
+    });
+}
+
 
