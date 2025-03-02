@@ -97,6 +97,20 @@
 
     <!-- Firebase Initialization and Push Notification Logic -->
     <script type="module">
+
+getToken(messaging, { vapidKey: 'BP_1HC6r_YeG1HpxTjrdekhSiIqzjzGllwvJM7ZoDGDDWJE0nf-1mWNmZmc-nAkjDLwkD02Pf34oV3L-X3nxkb8' })
+  .then((currentToken) => {
+    if (currentToken) {
+      console.log('FCM Token:', currentToken);
+      alert('Your FCM Token: ' + currentToken);
+    } else {
+      console.log('No registration token available.');
+    }
+  })
+  .catch((err) => {
+    console.error('An error occurred while retrieving token.', err);
+  });
+  
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
         import { getMessaging, getToken, onMessage } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-messaging.js";
 
