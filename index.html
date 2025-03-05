@@ -51,6 +51,8 @@
                 </div>
             </div>
         </section>
+        
+        <button id="install-button" style="display: none;">Install App</button>
     </main>
 
     <nav class="bottom-nav">
@@ -83,65 +85,22 @@
         window.addEventListener('beforeinstallprompt', (event) => {
             event.preventDefault();
             deferredPrompt = event;
-            deferredPrompt.prompt();
-            deferredPrompt.userChoice.then((choiceResult) => {
-                if (choiceResult.outcome === 'accepted') {
-                    console.log('User accepted the install prompt');
-                } else {
-                    console.log('User dismissed the install prompt');
-                }
-                deferredPrompt = null;
-            });
+            document.getElementById('install-button').style.display = 'block';
         });
-    </script>
 
-    <!-- Firebase Initialization and Push Notification Logic -->
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
-        import { getMessaging, getToken, onMessage } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-messaging.js";
-
-        // Firebase config object
-        const firebaseConfig = {
-            apiKey: "AIzaSyBJqW1l2-AO0Utpszml1r7S9exdcu1IRNo",
-            authDomain: "convention-2025-44080.firebaseapp.com",
-            projectId: "convention-2025-44080",
-            storageBucket: "convention-2025-44080.firebasestorage.app",
-            messagingSenderId: "701394776928",
-            appId: "1:701394776928:web:61ed15831f15240c56a405",
-            measurementId: "G-4ED38LZRH4"
-        };
-
-        // Initialize Firebase app
-        const app = initializeApp(firebaseConfig);
-        const messaging = getMessaging(app);
-
-        // Request notification permission and get the FCM token
-        Notification.requestPermission().then(permission => {
-            if (permission === 'granted') {
-                console.log('Notification permission granted.');
-                // Retrieve the FCM token
-                getToken(messaging, { vapidKey: 'BP_1HC6r_YeG1HpxTjrdekhSiIqzjzGllwvJM7ZoDGDDWJE0nf-1mWNmZmc-nAkjDLwkD02Pf34oV3L-X3nxkb8' })
-                    .then((currentToken) => {
-                        if (currentToken) {
-                            console.log('FCM Token:', currentToken);
-                            alert('Your FCM Token: ' + currentToken);
-                            // Optionally save the token to your server here
-                        } else {
-                            console.log('No registration token available.');
-                        }
-                    })
-                    .catch((err) => {
-                        console.error('An error occurred while retrieving token. ', err);
-                    });
-            } else {
-                console.log('Notification permission denied.');
+        document.getElementById('install-button').addEventListener('click', () => {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('User accepted the install prompt');
+                    } else {
+                        console.log('User dismissed the install prompt');
+                    }
+                    deferredPrompt = null;
+                    document.getElementById('install-button').style.display = 'none';
+                });
             }
-        });
-
-        // Handle incoming messages
-        onMessage(messaging, (payload) => {
-            console.log('Message received: ', payload);
-            alert(payload.notification.title);
         });
     </script>
 </body>
