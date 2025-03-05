@@ -2,6 +2,17 @@
 window.addEventListener('load', () => {
     console.log("Welcome to the 2025 National Clogging Convention!");
 
+    // Register service worker for PWA
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js')
+            .then((registration) => {
+                console.log('Service Worker registered with scope:', registration.scope);
+            })
+            .catch((error) => {
+                console.error('Service Worker registration failed:', error);
+            });
+    }
+
     // Declare variables for the install prompt and banner
     let deferredPrompt;
     const installBanner = document.getElementById('install-banner');
@@ -82,5 +93,3 @@ function saveTokenToServer(token) {
         console.error("Error saving token:", error);
     });
 }
-
-
