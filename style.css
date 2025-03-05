@@ -122,6 +122,23 @@ button:hover {
     border-color: #cbb643; /* Maintain gold border on hover */
 }
 
+/* Install Button */
+#install-button {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 15px;
+    background-color: black;
+    color: #cbb643;
+    text-align: center;
+    font-size: 25px;
+    border-radius: 8px;
+    border: 2px solid #cbb643;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
 .bottom-nav {
     position: fixed;
     bottom: 0;
